@@ -56,6 +56,11 @@ config commit -m "Add bashrc"
 config push
 ```
 
+Often you might want to add all the modified tracked files. To do this simply use:
+```
+config add -u
+```
+
 # TODO
 
 - Write a bash script to automate this setup
