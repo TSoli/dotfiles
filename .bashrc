@@ -139,13 +139,16 @@ fi
 
 unset env
 
-# set chrome as browser
-export BROWSER='/mnt/c/Program Files/Google/Chrome/Application/chrome.exe'
-
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Add PATH directories
 export PATH="$HOME/neovim/bin:$PATH"	# Neovim
-alias config='/usr/bin/git --git-dir=/home/tariq/.dotfiles/ --work-tree=/home/tariq'
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+
+# Add any setup specific to the current machine in this file
+if [[ -f .local_bashrc && -x .local_bashrc ]]
+then
+  source .local_bashrc
+fi
