@@ -25,9 +25,11 @@ config checkout
 If only a specific file is needed then use
 ```
 config fetch --all && config checkout origin/master -- path/to/file
-// git checkout <local repo name (default is origin)>/<branch name> -- path/to/file will checkout the particular file from the downloaded changes (origin/master).
+// git checkout <local repo name (default is origin)>/<branch name> -- path/to/file
 ```
-If the following error occurs it is because there are existing configuration files. Either delete them or back them up (see the [above guide](https://www.atlassian.com/git/tutorials/dotfiles)
+will checkout the particular file from the downloaded changes (origin/master).
+
+If the following error occurs it is because there are existing configuration files. Either delete them or back them up \(see the [above guide](https://www.atlassian.com/git/tutorials/dotfiles)\)
 ```
 error: The following untracked working tree files would be overwritten by checkout:
     .bashrc
@@ -60,6 +62,10 @@ Often you might want to add all the modified tracked files. To do this simply us
 ```
 config add -u
 ```
+
+## References
+
+For Neovim setup I mostly followed [this guide](https://www.youtube.com/playlist?list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ).
 
 # TODO
 
