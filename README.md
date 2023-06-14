@@ -63,6 +63,8 @@ Often you might want to add all the modified tracked files. To do this simply us
 config add -u
 ```
 
+6. Install a [Nerd-Font](https://github.com/ryanoasis/nerd-fonts) so that icons display correctly.
+
 ## References
 
 For Neovim setup I mostly followed [this guide](https://www.youtube.com/playlist?list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ).
