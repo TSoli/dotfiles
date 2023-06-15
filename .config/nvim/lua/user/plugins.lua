@@ -50,6 +50,7 @@ return packer.startup(function(use)
   use({ 'rose-pine/neovim', as = 'rose-pine' })
   use { "ellisonleao/gruvbox.nvim" }
   use "rebelot/kanagawa.nvim"
+  use "lunarvim/darkplus.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- Completion plugin
@@ -72,6 +73,14 @@ return packer.startup(function(use)
   -- Telescope
   use "nvim-telescope/telescope.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
+
+  -- Treesitter
+  use {
+    "nvim-treesitter/nvim-treesitter",
+    run = ":TSUpdate",
+  }
+  use "HiPhish/nvim-ts-rainbow2"
+  use "nvim-treesitter/playground"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
