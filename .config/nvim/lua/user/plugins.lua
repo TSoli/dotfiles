@@ -70,7 +70,7 @@ return packer.startup(function(use)
   use "williamboman/mason-lspconfig.nvim" -- simple to use language server installer
   use 'jose-elias-alvarez/null-ls.nvim' -- LSP diagnostics and code actions
 
-  -- Telescope
+  -- Telescope (fuzzy finder)
   use "nvim-telescope/telescope.nvim"
   use "nvim-telescope/telescope-media-files.nvim"
 
@@ -79,11 +79,18 @@ return packer.startup(function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
   }
-  use "HiPhish/nvim-ts-rainbow2"
+  use "HiPhish/nvim-ts-rainbow2"  -- colour brackets
   use "nvim-treesitter/playground"
-  use "windwp/nvim-autopairs"
-  use "windwp/nvim-ts-autotag"
-  use "RRethy/nvim-treesitter-endwise"
+  use "windwp/nvim-autopairs" -- auto close brackets/quotes
+  use "windwp/nvim-ts-autotag"  -- autoclose/rename tags
+  use "RRethy/nvim-treesitter-endwise"  -- smart end in languages like lua
+
+  -- Markdown Previewer
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && yarn install",
+    cmd = "MarkdownPreview",
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

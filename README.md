@@ -43,7 +43,7 @@ Aborting
 config config --local status.showUntrackedFiles no
 ```
 
-5. Check things are working as expected
+5. Install a [Nerd-Font](https://github.com/ryanoasis/nerd-fonts) so that icons display correctly.
 
 # Updating the config files
 
@@ -68,8 +68,6 @@ It may be useful to check the untracked files in a particular directory. This is
 config ls-files --others <path/to/dir>
 ```
 \(Note that if `path/to/dir` is excluded then it defaults to the current directory.\)
-
-6. Install a [Nerd-Font](https://github.com/ryanoasis/nerd-fonts) so that icons display correctly.
 
 ## References
 
