@@ -63,6 +63,12 @@ Often you might want to add all the modified tracked files. To do this simply us
 config add -u
 ```
 
+It may be useful to check the untracked files in a particular directory. This is possible with
+```
+config ls-files --others <path/to/dir>
+```
+\(Note that if `path/to/dir` is excluded then it defaults to the current directory.\)
+
 6. Install a [Nerd-Font](https://github.com/ryanoasis/nerd-fonts) so that icons display correctly.
 
 ## References

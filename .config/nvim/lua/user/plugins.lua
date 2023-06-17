@@ -81,6 +81,9 @@ return packer.startup(function(use)
   }
   use "HiPhish/nvim-ts-rainbow2"
   use "nvim-treesitter/playground"
+  use "windwp/nvim-autopairs"
+  use "windwp/nvim-ts-autotag"
+  use "RRethy/nvim-treesitter-endwise"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
