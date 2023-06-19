@@ -13,6 +13,10 @@ configs.setup {
   },
   autopairs = { enable = true, },
   autotag = { enable = true, },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
   endwise = { enable = true, },
   indent = { enable = true, disable = { "" }, },
   rainbow = {

@@ -23,7 +23,7 @@ vim.cmd [[
 -- Use a protected call so we don't error out on first use
 local status_ok, lazy = pcall(require, "lazy")
 if not status_ok then
-  vim.notify("Could not find lazy.")
+  vim.notify("Could not find 'lazy' plugin.")
   return
 end
 
@@ -35,7 +35,7 @@ return lazy.setup({
 
   -- Colorschemes
   "folke/tokyonight.nvim",
-  { 'rose-pine/neovim', name = 'rose-pine' },
+  { 'rose-pine/neovim', name = 'rose-pine', },
   "ellisonleao/gruvbox.nvim",
   "rebelot/kanagawa.nvim",
   "lunarvim/darkplus.nvim",
@@ -72,6 +72,8 @@ return lazy.setup({
   "windwp/nvim-autopairs", -- auto close brackets/quotes
   "windwp/nvim-ts-autotag",  -- autoclose/rename tags
   "RRethy/nvim-treesitter-endwise",  -- smart end in languages like lua
+  "numToStr/Comment.nvim",  -- Comment out lines
+  "JoosepAlviste/nvim-ts-context-commentstring", -- Suppot for context comment strings
 
   -- Markdown Previewer
   {
