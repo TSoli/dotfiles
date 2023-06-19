@@ -75,6 +75,12 @@ return lazy.setup({
   "numToStr/Comment.nvim",  -- Comment out lines
   "JoosepAlviste/nvim-ts-context-commentstring", -- Suppot for context comment strings
 
+  -- git
+  {
+    "lewis6991/gitsigns.nvim",
+    event = "BufReadPre",
+  },
+
   -- Markdown Previewer
   {
     "iamcco/markdown-preview.nvim",
