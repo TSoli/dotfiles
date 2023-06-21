@@ -1,7 +1,20 @@
--- required to set a theme below
-vim.o.background = nil
+local M = {
+  "rebelot/kanagawa.nvim",
+  lazy = false,     -- make sure we load this during startup if it is chosen colorscheme
+  priority = 1000,  -- make sure to load this before all the other start plugins
+}
 
-require("kanagawa").setup({
+-- used for :colorscheme <name>
+M.name = "kanagawa"
+
+
+function M.config()
+  local kanagawa = require(M.name)
+
+  -- required to set a theme below
+  vim.o.background = nil
+
+  kanagawa.setup({
   commentStyle = { },
   keywordStyle = { },
   theme = "dragon",
@@ -17,6 +30,12 @@ require("kanagawa").setup({
       TSRainbowCyan = { fg = colors.palette.waveAqua1 },
     }
   end,
-})
+  })
 
-vim.cmd("colorscheme kanagawa")
+  local status_ok, _ = pcall(vim.cmd.colorscheme, M.name)
+  if not status_ok then
+    vim.notify("Could not set '" .. M.name .. "' colorscheme.")
+  end
+end
+
+return M
