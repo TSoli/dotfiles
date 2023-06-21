@@ -1,3 +1,4 @@
+-- Highlight instances of words as the cursor hovers on them
 local M = {
   "RRethy/vim-illuminate",
   event = "VeryLazy",

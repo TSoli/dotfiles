@@ -1,3 +1,4 @@
+-- LSP diagnostics and code actions
 local M = {
   "jose-elias-alvarez/null-ls.nvim",
   event = "BufReadPre",

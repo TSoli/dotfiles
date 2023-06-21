@@ -1,3 +1,4 @@
+-- auto close brackets/quotes
 local M = {
   "windwp/nvim-autopairs",
   event = "InsertEnter",

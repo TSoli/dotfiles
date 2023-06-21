@@ -1,3 +1,4 @@
+-- File explorer
 local M = {
   "nvim-tree/nvim-tree.lua",
   event = "VimEnter",

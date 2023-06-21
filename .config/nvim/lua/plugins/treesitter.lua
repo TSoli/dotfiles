@@ -1,19 +1,20 @@
+-- Treesitter
 local M = {
   "nvim-treesitter/nvim-treesitter",
   event = "BufReadPost",
   dependencies = {
-    "HiPhish/nvim-ts-rainbow2",  -- colour brackets
+    "HiPhish/nvim-ts-rainbow2",                       -- colour brackets
 
     {
-      "windwp/nvim-autopairs", -- auto close brackets/quotes
+      "windwp/nvim-autopairs",                        -- auto close brackets/quotes
       event = "VeryLazy",
     },
     {
-      "windwp/nvim-ts-autotag",  -- autoclose/rename tags
+      "windwp/nvim-ts-autotag",                       -- autoclose/rename tags
       event = "VeryLazy",
     },
     {
-      "RRethy/nvim-treesitter-endwise",  -- smart end in languages like lua
+      "RRethy/nvim-treesitter-endwise",               -- smart end in languages like lua
       event = "VeryLazy",
     },
     {
@@ -21,7 +22,7 @@ local M = {
       event = "VeryLazy",
     },
     {
-      "nvim-tree/nvim-web-devicons",
+      "nvim-tree/nvim-web-devicons",                  -- nice icons for nvim-tree
       event = "VeryLazy",
     },
   },

@@ -1,3 +1,4 @@
+-- Telescope (fuzzy finder)
 local M = {
   "nvim-telescope/telescope.nvim",
   event = "Bufenter",

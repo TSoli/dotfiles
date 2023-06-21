@@ -1,9 +1,10 @@
+-- Comment out lines
 local M = {
   "numToStr/Comment.nvim",
   event = {"BufRead", "BufNewFile"},
   dependencies = {
     {
-      "JoosepAlviste/nvim-ts-context-commentstring",
+      "JoosepAlviste/nvim-ts-context-commentstring",  -- Support for context comment strings
       event = "VeryLazy",
     },
   },

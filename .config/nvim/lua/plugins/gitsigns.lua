@@ -1,3 +1,4 @@
+-- git stuff (symbols e.t.c)
 local M = {
   "lewis6991/gitsigns.nvim",
   event = "BufReadPre",

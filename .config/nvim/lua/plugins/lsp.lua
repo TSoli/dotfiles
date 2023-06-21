@@ -1,5 +1,6 @@
+-- LSP
 local M = {
-  "neovim/nvim-lspconfig",
+  "neovim/nvim-lspconfig",  --enable cmp
   lazy = true,
   dependencies = {
     "hrsh7th/cmp-nvim-lsp",

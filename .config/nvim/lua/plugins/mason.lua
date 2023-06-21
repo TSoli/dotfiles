@@ -1,3 +1,4 @@
+-- simple to use language server installer
 local M = {
   "williamboman/mason.nvim",
   cmd = "Mason",
