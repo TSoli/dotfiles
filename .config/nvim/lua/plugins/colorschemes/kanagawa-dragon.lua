@@ -15,21 +15,27 @@ function M.config()
   vim.o.background = nil
 
   kanagawa.setup({
-  commentStyle = { },
-  keywordStyle = { },
-  theme = "dragon",
-  overrides = function(colors)
-    return {
-      -- For ts-rainbow2 bracket coloring
-      TSRainbowRed = { fg = colors.palette.dragonRed },
-      TSRainbowYellow = { fg = colors.palette.autumnYellow },
-      TSRainbowBlue = { fg = colors.palette.springBlue },
-      TSRainbowOrange = { fg = colors.palette.surimiOrange },
-      TSRainbowGreen = { fg = colors.palette.springGreen },
-      TSRainbowViolet = { fg = colors.palette.oniViolet },
-      TSRainbowCyan = { fg = colors.palette.waveAqua1 },
-    }
-  end,
+    commentStyle = { italic = true, },
+    functionStyle = {},
+    keywordStyle = { italic = true, },
+    statementStyle = { bold = true, },
+    typeStyle = {},
+    theme = "dragon",
+    overrides = function(colors)
+      return {
+        -- For ts-rainbow2 bracket coloring
+        TSRainbowRed = { fg = colors.palette.dragonRed },
+        TSRainbowYellow = { fg = colors.palette.autumnYellow },
+        TSRainbowBlue = { fg = colors.palette.springBlue },
+        TSRainbowOrange = { fg = colors.palette.surimiOrange },
+        TSRainbowGreen = { fg = colors.palette.springGreen },
+        TSRainbowViolet = { fg = colors.palette.oniViolet },
+        TSRainbowCyan = { fg = colors.palette.waveAqua1 },
+
+        -- for line numbers
+        CursorLineNr = { fg = colors.palette.dragonOrange, },
+      }
+    end,
   })
 
   local status_ok, _ = pcall(vim.cmd.colorscheme, M.name)

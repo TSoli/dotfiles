@@ -8,7 +8,8 @@ local options = {
   cmdheight = 2,                                  -- command line height
   completeopt = { "menu", "menuone", "preview" }, -- autocomplete options
   conceallevel = 0,                               -- show concealed text
-  cursorline = false,                             -- highlight current line
+  cursorline = true,                              -- highlight current line
+  cursorlineopt = "number",                       -- highlight current line number
   dir = configdir .. "/.swp//",                   -- swap file directory
   expandtab = true,                               -- make tabs spaces
   fileencoding = "utf-8",                         -- encoding applied to files when writte
@@ -36,7 +37,7 @@ local options = {
   updatetime = 4000,                              -- After this many ms of no typing write swap file to disk
   undofile = true,                                -- enable undofiles
   undodir = configdir .. "/.undo//",              -- undofile directory
-  wrap = true,                                    -- whether lines wrap
+  wrap = false,                                    -- whether lines wrap
   writebackup = true,                             -- enable backup before writing
 }
 
