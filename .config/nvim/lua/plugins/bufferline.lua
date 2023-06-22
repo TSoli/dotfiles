@@ -3,6 +3,7 @@ local M = {
   event = { "BufReadPre", "BufAdd", "BufNew", "BufReadPost" },
   dependencies = {
     "famiu/bufdelete.nvim",
+    "nvim-tree/nvim-web-devicons",
   },
 }
 
