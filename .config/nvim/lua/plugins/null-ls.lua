@@ -12,6 +12,11 @@ local M = {
 
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
+-- local file_exists = function(file)
+--   local f = io.open(file, "r")
+--   if f ~= nil then io.close(f) return true else return false end
+-- end
+
 function M.config()
   local null_ls = require "null-ls"
   -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
@@ -32,10 +37,22 @@ function M.config()
         },
       },
       formatting.eslint_d.with {
-        -- for now disable if there is not an eslint file, would like a default
         condition = function(utils)
-          return utils.root_has_file({ ".eslintrc.js", ".eslintrc.json", ".eslintrc.cjs" })
+          return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json" })
         end,
+        -- extra_args = function(params)
+        --   local file_types = {"js", "cjs", "yaml", "yml", "json"}
+        --   for _, file_type in pairs(file_types) do
+        --     if file_exists(params.root .. '/.eslintrc.' .. file_type) then
+        --       return {}
+        --     end
+        --   end
+        --
+        --   return {
+        --     "--config",
+        --     vim.fn.expand('~/.config/nvim/utils/linter-config/.eslintrc.js')
+        --   }
+        -- end,
       },
       formatting.black.with { extra_args = {} },
       formatting.stylua,
@@ -45,14 +62,14 @@ function M.config()
       diagnostics.flake8,
       diagnostics.eslint_d.with {
         condition = function(utils)
-          return utils.root_has_file({ ".eslintrc.js", ".eslintrc.json", ".eslintrc.cjs" })
+          return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json" })
         end,
       },
 
       -- code actions
       code_actions.eslint_d.with {
         condition = function(utils)
-          return utils.root_has_file({ ".eslintrc.js", ".eslintrc.json", ".eslintrc.cjs" })
+          return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslint.yaml", ".eslint.yml", ".eslintrc.json" })
         end,
       },
     },
