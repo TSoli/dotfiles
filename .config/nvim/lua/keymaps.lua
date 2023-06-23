@@ -48,7 +48,7 @@ keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
 
 -- Close buffers
-keymap("n", "<S-q>", "<cmd>Bdelete!<CR>", opts)
+keymap("n", "<leader>q", "<cmd>Bdelete<CR>", opts)
 
 -- Insert --
 -- see :help insert-index for a full list of commands
@@ -70,6 +70,9 @@ keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 -- keep the clipboard item when pasting over a word
 keymap("v", "p", '".dP', opts)
 
+-- copy text
+keymap("v", "<C-C>", "<cmd>'<, '>w !clip.exe<CR>", opts)
+
 -- Visual Block --
 -- see :xmap
 
@@ -78,6 +81,9 @@ keymap("v", "p", '".dP', opts)
 -- keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+
+-- copy text
+keymap("x", "<C-C>", "<cmd>'<, '>w !clip.exe<CR>", opts)
 
 -- Terminal --
 

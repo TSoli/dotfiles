@@ -145,6 +145,10 @@ function M.config()
       width = 30,
       side = "left",
     },
+    git = {
+      enable = true,
+      ignore = false,
+    },
   }
 end
 
