@@ -50,42 +50,43 @@ function M.config()
             PRETTIERD_DEFAULT_CONFIG = vim.fn.expand("~/.config/nvim/utils/linter-config/.prettierrc.json"),
         },
       },
-      formatting.eslint_d.with {
-        condition = function(utils)
-          return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json" })
-        end,
-        -- extra_args = function(params)
-        --   local file_types = {"js", "cjs", "yaml", "yml", "json"}
-        --   for _, file_type in pairs(file_types) do
-        --     if file_exists(params.root .. '/.eslintrc.' .. file_type) then
-        --       return {}
-        --     end
-        --   end
-        --
-        --   return {
-        --     "--config",
-        --     vim.fn.expand('~/.config/nvim/utils/linter-config/.eslintrc.js')
-        --   }
-        -- end,
-      },
+      -- use eslint lsp server instead
+      -- formatting.eslint_d.with {
+      --   condition = function(utils)
+      --     return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json" })
+      --   end,
+      --   -- extra_args = function(params)
+      --   --   local file_types = {"js", "cjs", "yaml", "yml", "json"}
+      --   --   for _, file_type in pairs(file_types) do
+      --   --     if file_exists(params.root .. '/.eslintrc.' .. file_type) then
+      --   --       return {}
+      --   --     end
+      --   --   end
+      --   --
+      --   --   return {
+      --   --     "--config",
+      --   --     vim.fn.expand('~/.config/nvim/utils/linter-config/.eslintrc.js')
+      --   --   }
+      --   -- end,
+      -- },
       formatting.black.with { extra_args = {} },
       formatting.stylua,
       formatting.google_java_format,
 
       -- diagnostics
       diagnostics.flake8,
-      diagnostics.eslint_d.with {
-        condition = function(utils)
-          return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json" })
-        end,
-      },
+      -- diagnostics.eslint_d.with {
+      --   condition = function(utils)
+      --     return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json" })
+      --   end,
+      -- },
 
       -- code actions
-      code_actions.eslint_d.with {
-        condition = function(utils)
-          return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslint.yaml", ".eslint.yml", ".eslintrc.json" })
-        end,
-      },
+      -- code_actions.eslint_d.with {
+      --   condition = function(utils)
+      --     return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslint.yaml", ".eslint.yml", ".eslintrc.json" })
+      --   end,
+      -- },
     }
   }
 end

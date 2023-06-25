@@ -1,16 +1,18 @@
 -- Telescope (fuzzy finder)
 local M = {
-  "nvim-telescope/telescope.nvim",
-  event = "Bufenter",
-  cmd = { "Telescope" },
-  dependencies = {
-    -- "ahmedkhalf/project.nvim",
-    {
-      "nvim-treesitter/nvim-treesitter",
-      event = "BufReadPost",
+  {
+    "nvim-telescope/telescope.nvim",
+    event = "BufEnter",
+    cmd = { "Telescope" },
+    dependencies = {
+      "ahmedkhalf/project.nvim",
+      {
+        "nvim-treesitter/nvim-treesitter",
+        event = "BufReadPost",
+      },
     },
   },
-  "nvim-telescope/telescope-media-files.nvim", -- display preview of media files in telescope
+  { "nvim-telescope/telescope-media-files.nvim" }, -- display preview of media files in telescope
 }
 
 function M.config()

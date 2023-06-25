@@ -11,13 +11,13 @@ function M.config()
     "n",
     "<a-n>",
     '<cmd>lua require"illuminate".next_reference{wrap=true}<cr>',
-    { noremap = true }
+    { noremap = true, desc = "Go to previous reference" }
   )
   vim.api.nvim_set_keymap(
     "n",
     "<a-p>",
     '<cmd>lua require"illuminate".next_reference{reverse=true,wrap=true}<cr>',
-    { noremap = true }
+    { noremap = true, desc = "Go to next reference" }
   )
 
   illuminate.configure {
