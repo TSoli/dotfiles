@@ -9,7 +9,7 @@ One of the most useful parts of having version control for these config files is
 1. Install git and clone the repo. E.g if the `apt` package manager is available then use the following.
 
 ```
-sudo apt install -y git && git clone --bare https://github.com/TSoli/dotfiles.git $HOME/.dotfiles
+sudo apt install -y git && git clone --bare git@github.com:TSoli/dotfiles.git
 ```
 
 \(Note: might change this to use SSH in the future\)
@@ -35,7 +35,7 @@ config fetch --all && config checkout origin/master -- path/to/file
 // git checkout <local repo name (default is origin)>/<branch name> -- path/to/file
 ```
 
-will checkout the particular file from the downloaded changes (origin/master).
+to checkout the particular file \(from origin/master\).
 
 If the following error occurs it is because there are existing configuration files. Either delete them or back them up \(see the [above guide](https://www.atlassian.com/git/tutorials/dotfiles)\)
 
@@ -53,7 +53,11 @@ Aborting
 config config --local status.showUntrackedFiles no
 ```
 
-5. Install a [Nerd-Font](https://github.com/ryanoasis/nerd-fonts) so that icons display correctly.
+5. Install the [neovim](https://github.com/neovim/neovim) appimage \(version >= 0.9.1\) and save it as `~/neovim/nvim` \(this corresponds to the alias in the `.bashrc` file\).
+
+\(not it is probably a good idea to also install node with nvm, and yarn, e.t.c if not already installed\).
+
+6. Install a [Nerd-Font](https://github.com/ryanoasis/nerd-fonts) so that icons display correctly.
 
 # Updating the config files
 
