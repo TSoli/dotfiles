@@ -1,6 +1,6 @@
 # Configuration Files \(dotfiles\)
 
-This repo stores some useful configuration files \(commonly referred to as dotfiles\).
+This repo stores some of my useful configuration files \(commonly referred to as dotfiles\) for a Linux machine.
 
 # Migrating to a new system
 
@@ -14,7 +14,7 @@ sudo apt install -y git && git clone --bare git@github.com:TSoli/dotfiles.git
 
 \(Note: might change this to use SSH in the future\)
 
-2. Add the following alias to the `.bashrc`. This will be used similarly to the `git` command for the bare repo holding the config info.
+2. Run the following command \(note this is in the `.bashrc` from later so will automatically be applied then\). This will be used similarly to the `git` command for the bare repo holding the config info.
 
 ```
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -47,17 +47,11 @@ Please move or remove them before you can switch branches.
 Aborting
 ```
 
-4. Hide all the untracked files in the repo (otherwise it will show basically everything from the home directory)
-
-```
-config config --local status.showUntrackedFiles no
-```
-
-5. Install the [neovim](https://github.com/neovim/neovim) appimage \(version >= 0.9.1\) and save it as `~/neovim/nvim` \(this corresponds to the alias in the `.bashrc` file\).
-
-\(not it is probably a good idea to also install node with nvm, and yarn, e.t.c if not already installed\).
-
-6. Install a [Nerd-Font](https://github.com/ryanoasis/nerd-fonts) so that icons display correctly.
+4. Now run `source ~/.bashrc` and then run the setup script with `~/.setup_scripts/debian_based/bash_setup.sh`
+   \(note that this is for Debian-based distros such as Ubuntu\). This will install neovim and some package managers
+   \(nvm, npm, yarn\) that are generally useful and needed for some of the plugins I use. It also installs some
+   the Hack [Nerd-Fonts](https://github.com/ryanoasis/nerd-fonts) which needs to be manually enabled for the terminal
+   in order for some symbols to show.
 
 # Updating the config files
 
@@ -92,5 +86,4 @@ For Neovim setup I mostly followed [this guide](https://www.youtube.com/playlist
 
 # TODO
 
-- Write a bash script to automate this setup
-- Look into zsh
+- Look into zsh, tmux, plugins?

@@ -144,7 +144,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Add PATH directories
-export PATH="$HOME/neovim/bin:$PATH"	# Neovim
+# export PATH="$HOME/neovim/bin:$PATH"	# Neovim
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Add any setup specific to the current machine in this file
