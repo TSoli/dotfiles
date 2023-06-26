@@ -4,7 +4,7 @@ local M = {
 }
 
 function M.config()
-  eyeliner = require("eyeliner")
+  local eyeliner = require("eyeliner")
 
   -- set up custom highlighting
   -- vim.api.nvim_set_hl(0, 'EyelinerPrimary', { fg='#000000', bold = true, underline = true })

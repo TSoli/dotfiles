@@ -4,7 +4,7 @@ local M = {
 }
 
 function M.config()
-  colorizer = require "colorizer"
+  local colorizer = require "colorizer"
 
   colorizer.setup()
 end

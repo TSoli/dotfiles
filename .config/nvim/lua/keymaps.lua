@@ -4,6 +4,7 @@
 -- for plugin/user keybindings see :map and :map!
 -- to see where the keybindings are defined see :verbose-map
 -- for more details see :help map
+-- TODO: check out primeagen keymaps
 
 local keymap = vim.api.nvim_set_keymap
 
