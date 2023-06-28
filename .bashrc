@@ -29,6 +29,8 @@ shopt -s checkwinsize
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+# add scroll support for mouse (seems to break in WSL otherwise)
+[[ "${LESS}" != *--mouse* ]] && export LESS="${LESS} --mouse"
 
 # set variable identifying the chroot you work in (used in the prompt below)
 if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
@@ -66,7 +68,7 @@ unset color_prompt force_color_prompt
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    PS1="\[\e]0;${debian_chroot:+[$debian_chroot}\u@\h: \w\a\]$PS1"
     ;;
 *)
     ;;
@@ -144,8 +146,12 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Add PATH directories
-# export PATH="$HOME/neovim/bin:$PATH"	# Neovim
 alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+# set the default editor to be neovim
+export VISUAL=nvim
+export EDITOR=$VISUAL
+
+alias nv=nvim
 
 # Add any setup specific to the current machine in this file
 if [[ -f .local_bashrc && -x .local_bashrc ]]

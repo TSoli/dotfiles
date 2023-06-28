@@ -38,7 +38,7 @@ local options = {
   updatetime = 4000,                              -- After this many ms of no typing write swap file to disk
   undofile = true,                                -- enable undofiles
   undodir = configdir .. "/.undo//",              -- undofile directory
-  wrap = false,                                    -- whether lines wrap
+  wrap = false,                                   -- whether lines wrap
   writebackup = true,                             -- enable backup before writing
 }
 

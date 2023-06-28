@@ -100,6 +100,8 @@ function M.config()
   -- local tree_cb = require("nvim-tree.config").nvim_tree_callback
   require("nvim-tree").setup {
     on_attach = on_attach,
+    sync_root_with_cws = true,
+    respect_buf_cwd = true,
     update_focused_file = {
       enable = true,
       update_cwd = true,

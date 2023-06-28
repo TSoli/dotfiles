@@ -6,14 +6,21 @@ cd $HOME
 /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showUntrackedFiles no 
 
 printf "Installing packages...\n"
-sudo apt-get update && sudo apt install -y curl
+# ripgrep is necessary for a plugin in neovim
+sudo apt-get update && sudo apt install -y curl wget ripgrep tar gzip build-essential less
 
 # yarn is necessary for a plugin in neovim
 printf "Installing package managers...\n"
 # nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash
+curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 # npm/yarn
 nvm install --lts && npm install -g yarn
+
+printf "Installing more packages...\n"
+
+for pkg in ~/.setup_scripts/debian_based/packages/*.sh; do
+  bash "$pkg"
+done
 
 printf "Installing neovim...\n"
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage && \

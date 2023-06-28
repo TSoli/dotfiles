@@ -1,0 +1,25 @@
+[user]
+	email = tariqsoliman2000@gmail.com
+	name = TSoli
+
+[core]
+  pager = delta
+  editor = "nvim"
+
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true # use n and N to naviage between diff sections
+  light = false   # set to true for terminals with light background
+  line-numbers = true
+  side-by-side = true
+  hyperlinks = true
+  true-color = always
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
+

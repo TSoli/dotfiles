@@ -1,13 +1,5 @@
 local M = {
   "ahmedkhalf/project.nvim",
-  cmd = { "Telescope" },
-  dependencies = {
-    {
-      "nvim-telescope/telescope.nvim",
-      event = "BufEnter",
-      cmd = { "Telescope" },
-    },
-  },
 }
 
 function M.config()
