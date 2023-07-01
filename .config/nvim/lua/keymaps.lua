@@ -98,9 +98,10 @@ local maps = {
 
   -- Telescope
   { "n", "<leader>ff", ":Telescope find_files<CR>", "Telescope: Find files" },
-  { "n", "<leader>ft", ":Telescope live_grep<CR>", "Telescope: Find in cwd" },
+  { "n", "<leader>fg", ":Telescope live_grep<CR>", "Telescope: Find in cwd" },
   { "n", "<leader>fp", ":Telescope projects<CR>", "Telescope: Find projects" },
   { "n", "<leader>fb", ":Telescope buffers<CR>", "Telescope: Find buffers" },
+  { "n", "<leader>fh", ":Telescope help_tags<CR>", "Telescope: Find help tags" },
 
   -- Git
   { "n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Toggle lazy git" },
@@ -108,6 +109,9 @@ local maps = {
   -- Comment
   { "n", "<leader>/", "<cmd>lua require('Comment.api').toggle.linewise.current()<CR>", "Comment line" },
   { "x", "<leader>/", "<esc><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>", "Comment selection" },
+
+  -- Undotree
+  { "n", "<leader>u", "<cmd>UndotreeToggle<CR>", "Undotree: Toggle" },
 
   -- DAP
   { "n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "DAP: Toggle breakpoint" },

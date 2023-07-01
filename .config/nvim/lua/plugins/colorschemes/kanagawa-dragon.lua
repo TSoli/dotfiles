@@ -34,6 +34,9 @@ function M.config()
 
         -- for line numbers
         CursorLineNr = { fg = colors.palette.dragonOrange, },
+
+        -- ruler colour
+        ColorColumn = { bg = colors.palette.winterRed }
       }
     end,
   })

@@ -1,8 +1,9 @@
 -- Telescope (fuzzy finder)
 local M = {
   "nvim-telescope/telescope.nvim",
-  tag = "0.1.1",
+  tag = "0.1.2",
   cmd = { "Telescope" },
+  event = "BufEnter",
   dependencies = {
     "nvim-telescope/telescope-media-files.nvim", -- display preview of media files in telescope
     "nvim-lua/plenary.nvim",
@@ -12,8 +13,8 @@ local M = {
 }
 
 function M.config()
-  local actions = require("telescope.actions")
   local telescope = require("telescope")
+  local actions = require("telescope.actions")
 
   -- This should be moved to keymaps if it works since it invokes Telescope
   -- but the command will not be mapped unless Telescope has already been invoked
@@ -107,10 +108,10 @@ function M.config()
       --   diff_context_lines = vim.o.scrolloff,
       --   entry_format = "state #$ID, $STAT, $TIME",
       --   time_format = "",
-      --   -- layout_strategy = "vertical",
-      --   -- layout_config = {
-      --   --   preview_height = 0.8,
-      --   -- },
+      --   layout_strategy = "vertical",
+      --   layout_config = {
+      --     preview_height = 0.8,
+      --   },
       --   mappings = {
       --     i = {
       --       -- IMPORTANT: Note that telescope-undo must be available when telescope is configured if
@@ -132,7 +133,7 @@ function M.config()
     },
   })
 
-  telescope.load_extension("undo")
+  -- telescope.load_extension("undo")
   telescope.load_extension("media_files")
 end
 

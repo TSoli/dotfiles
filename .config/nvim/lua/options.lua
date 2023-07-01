@@ -6,13 +6,14 @@ local options = {
   backupdir = configdir .. "/.backup//",          -- backup location
   clipboard = "",                                 -- use system clipboard
   cmdheight = 2,                                  -- command line height
-  colorcolumn = {""},                             -- set vertical rule
+  colorcolumn = { "80" },                             -- set vertical rule
   completeopt = { "menu", "menuone", "preview" }, -- autocomplete options
   conceallevel = 0,                               -- show concealed text
   cursorline = true,                              -- highlight current line
   cursorlineopt = "number",                       -- highlight current line number
   dir = configdir .. "/.swp//",                   -- swap file directory
   expandtab = true,                               -- make tabs spaces
+  exrc = true,
   fileencoding = "utf-8",                         -- encoding applied to files when writte
   hlsearch = true,                                -- search highlighting
   ignorecase = true,                              -- ignore case when searching
@@ -45,4 +46,6 @@ local options = {
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
+vim.cmd("hi ColorColumn guibg=#1FDBE2")
 

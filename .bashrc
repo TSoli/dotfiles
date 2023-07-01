@@ -152,6 +152,7 @@ export VISUAL=nvim
 export EDITOR=$VISUAL
 
 alias nv=nvim
+alias lg=lazygit
 
 # Add any setup specific to the current machine in this file
 if [[ -f .local_bashrc && -x .local_bashrc ]]
