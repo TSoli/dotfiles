@@ -6,9 +6,11 @@ cd $HOME
 /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showUntrackedFiles no 
 
 printf "Installing packages...\n"
-# ripgrep is necessary for a plugin in neovim
-sudo apt-get update && sudo apt install -y curl wget ripgrep tar gzip \
+sudo apt-get update && sudo apt-get install -y zip curl wget ripgrep tar gzip \
   build-essential less xclip cmake
+
+# make zsh the default shell
+chsh -s $(which zsh)
 
 # yarn is necessary for a plugin in neovim
 printf "Installing package managers...\n"
