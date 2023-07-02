@@ -1,16 +1,19 @@
 #!/usr/bin/env bash
 
-# A script used to setup my config in bash
+# A script used to setup my config in bash and change to zsh
 cd $HOME
 # Hide untracked files from the bare git repo
 /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showUntrackedFiles no 
 
 printf "Installing packages...\n"
-sudo apt-get update && sudo apt-get install -y zip curl wget ripgrep tar gzip \
-  build-essential less xclip cmake
+sudo apt-get update && sudo apt-get install -y zip zsh curl wget ripgrep tar \
+  gzip build-essential less xclip cmake
 
 # make zsh the default shell
 chsh -s $(which zsh)
+
+# install zap plugin manager for zsh
+zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
 
 # yarn is necessary for a plugin in neovim
 printf "Installing package managers...\n"
