@@ -7,7 +7,8 @@ cd $HOME
 
 printf "Installing packages...\n"
 # ripgrep is necessary for a plugin in neovim
-sudo apt-get update && sudo apt install -y curl wget ripgrep tar gzip build-essential less
+sudo apt-get update && sudo apt install -y curl wget ripgrep tar gzip \
+  build-essential less xclip cmake
 
 # yarn is necessary for a plugin in neovim
 printf "Installing package managers...\n"

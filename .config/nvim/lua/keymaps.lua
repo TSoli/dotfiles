@@ -50,6 +50,14 @@ local maps = {
   -- Close buffers
   { "n", "<leader>q", "<cmd>Bdelete<CR>", "Close buffer" },
 
+  { "n", "J", "mzJ`z", "Append line below" },   -- stops cursor from moving
+
+  -- Keep cursor in the middle while paging up/down and searching
+  { "n", "<C-d>", "<C-d>zz", "Page down" },
+  { "n", "<C-u>", "<C-u>zz", "Page up" },
+  { "n", "n", "nzzzv", "Next search"},
+  { "n", "N", "Nzzzv", "Previous search"},
+
   -- Insert --
   -- see :help insert-index for a full list of commands
   -- see :imap
@@ -78,13 +86,21 @@ local maps = {
   -- see :xmap
 
   -- Move text up and down
-  -- { "x", "J", ":move '>+1<CR>gv-gv", "" },
-  -- { "x", "K", ":move '<-2<CR>gv-gv", "" },
+  { "x", "J", ":move '>+1<CR>gv-gv", "" },
+  { "x", "K", ":move '<-2<CR>gv-gv", "" },
   { "x", "<A-j>", ":move '>+1<CR>gv-gv", "Move text down" },
   { "x", "<A-k>", ":move '<-2<CR>gv-gv", "Move text up" },
 
   -- copy text
-  { "x", "<C-C>", "<cmd>'<, '>w !clip.exe<CR>", "Copy text" },
+  -- { "x", "<C-C>", "<cmd>'<, '>w !clip.exe<CR>", "Copy text" },
+  { "x", "<leader>p", "\"_dP", "Paste over word (delte to void)" },  -- adds deleted word to void register instead
+  { "n", "<leader>y", "\"+y", "Copy to system clipboard" },
+  { "n", "<leader>Y", "\"+Y", "Copy to system clipboard" },
+  { "v", "<leader>y", "\"+y", "Copy to system clipboard" },
+
+  -- delete to void register
+  { "n", "<leader>dd", "\"_d", "Delete to void" },
+  { "v", "<leader>dd", "\"_d", "Delete to void" },
 
   -- Terminal --
 

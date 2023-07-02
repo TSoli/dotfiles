@@ -16,6 +16,7 @@ local options = {
   exrc = true,
   fileencoding = "utf-8",                         -- encoding applied to files when writte
   hlsearch = true,                                -- search highlighting
+  incsearch = true,                               -- show where the pattern as it is typed
   ignorecase = true,                              -- ignore case when searching
   linebreak = true,                               -- do not break lines mid word
   mouse = "a",                                    -- allow mouse in modes (n - normal, v - visual, i - insert, a - all see options for more)
@@ -36,9 +37,9 @@ local options = {
   termguicolors = true,                           -- enable 24-bit RBG color in TUI
   timeoutlen = 300,                               -- time to wait for mapped sequence to complete (in ms)
   tabstop = 2,                                    -- number of spaces used to represent a <Tab> in a file
-  updatetime = 4000,                              -- After this many ms of no typing write swap file to disk
+  updatetime = 200,                               -- After this many ms of no typing write swap file to disk
   undofile = true,                                -- enable undofiles
-  undodir = configdir .. "/.undo//",              -- undofile directory
+  undodir = configdir .. "/.undo/",               -- undofile directory
   wrap = false,                                   -- whether lines wrap
   writebackup = true,                             -- enable backup before writing
 }
@@ -47,5 +48,6 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
+-- default colour change in colorscheme
 vim.cmd("hi ColorColumn guibg=#1FDBE2")
 

@@ -5,10 +5,14 @@ local M = {
   cmd = { "Telescope" },
   event = "BufEnter",
   dependencies = {
-    "nvim-telescope/telescope-media-files.nvim", -- display preview of media files in telescope
-    "nvim-lua/plenary.nvim",
-    -- "debugloop/telescope-undo.nvim",
     "nvim-treesitter/nvim-treesitter",
+    "nvim-lua/plenary.nvim",
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+    },
+    "nvim-telescope/telescope-media-files.nvim", -- display preview of media files in telescope
+    -- "debugloop/telescope-undo.nvim",
   }
 }
 
@@ -94,6 +98,13 @@ function M.config()
       },
     },
     extensions = {
+      fzf = {
+        fuzzy = true,                    -- false will only do exact matching
+        override_generic_sorter = true,  -- override the generic sorter
+        override_file_sorter = true,     -- override the file sorter
+        case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                         -- the default case_mode is "smart_case"
+      },
       media_files = {
         -- filetypes whitelist
         -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
@@ -109,9 +120,7 @@ function M.config()
       --   entry_format = "state #$ID, $STAT, $TIME",
       --   time_format = "",
       --   layout_strategy = "vertical",
-      --   layout_config = {
-      --     preview_height = 0.8,
-      --   },
+      --   layout_config = { preview_height = 0.8, },
       --   mappings = {
       --     i = {
       --       -- IMPORTANT: Note that telescope-undo must be available when telescope is configured if
@@ -133,6 +142,7 @@ function M.config()
     },
   })
 
+  telescope.load_extension("fzf")
   -- telescope.load_extension("undo")
   telescope.load_extension("media_files")
 end
