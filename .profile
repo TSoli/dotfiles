@@ -53,22 +53,11 @@ fi
 
 unset env
 
-# Alisases e.t.c
+# Environment variables
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-# Add PATH directories
-alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 # set the default editor to be neovim
 export VISUAL=nvim
 export EDITOR=$VISUAL
-
-alias nv=nvim
-alias lg=lazygit
-
-# Add any setup specific to the current machine in this file
-if [[ -f .local_bashrc && -x .local_bashrc ]]
-then
-  source .local_bashrc
-fi

@@ -117,3 +117,9 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# Add any setup specific to the current machine in this file
+if [[ -f .local_bashrc && -x .local_bashrc ]]
+then
+  source .local_bashrc
+fi

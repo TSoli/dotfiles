@@ -1,13 +1,17 @@
 #!/usr/bin/env bash
 
 # A script used to setup my config in bash and change to zsh
+# Assumes git is installed previously
 cd $HOME
 # Hide untracked files from the bare git repo
 /usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME config --local status.showUntrackedFiles no 
 
 printf "Installing packages...\n"
-sudo apt-get update && sudo apt-get install -y zip zsh curl wget ripgrep tar \
-  gzip build-essential less xclip cmake
+sudo apt-get update && sudo apt-get install -y zsh zip curl wget ripgrep tar \
+  gzip build-essential less xclip cmake tmux
+
+# tmux package manager
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 # make zsh the default shell
 chsh -s $(which zsh)
