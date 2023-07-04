@@ -1,6 +1,7 @@
 # Configuration Files \(dotfiles\)
 
-This repo stores some of my useful configuration files \(commonly referred to as dotfiles\) for a Linux machine.
+This repo stores some of my useful configuration files \(commonly referred to as
+dotfiles\) for a Linux machine.
 
 # Migrating to a new system
 
@@ -65,11 +66,18 @@ Aborting
    [Nerd-Fonts](https://github.com/ryanoasis/nerd-fonts) which needs to be
    manually enabled for the terminal in order for some symbols to show.
 
+5. If running Linux, you may like to install
+   [Alacritty](https://github.com/alacritty/alacritty) as a terminal emulator
+   \(note there is config for it in this repo\).
+
 # Troubleshooting
 
-If it seems that `.zprofile` or `.zshrc` is not running properly on startup
-this is likely due to the terminal not running as a login shell. Therefore, you
-may need to change this setting in the terminal application itself.
+If it seems that `.zprofile` or `.zshrc` is not running properly on startup this
+is likely due to the terminal not running as a login shell. Therefore, you may
+need to change this setting in the terminal application itself.
+
+It is also likely that the first time opening tmux the plugins will need to be
+manually installed by pressing the prefix \(C-Space\) and then 'I' \(S-i\).
 
 # Updating the config files
 

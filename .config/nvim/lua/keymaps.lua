@@ -79,9 +79,6 @@ local maps = {
   -- keep the clipboard item when pasting over a word
   { "v", "p", '".dP', "Paste" },
 
-  -- copy text
-  { "v", "<C-C>", "<cmd>'<, '>w !clip.exe<CR>", "Copy text" },
-
   -- Visual Block --
   -- see :xmap
 

@@ -131,3 +131,8 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [ -z "$TMUX" ]; then
   # Create session 'main' or attach to 'main' if already exists.
   tmux new-session -A -s main
 fi
+
+# Setup nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
