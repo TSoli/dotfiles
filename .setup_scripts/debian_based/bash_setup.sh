@@ -8,10 +8,13 @@ cd $HOME
 
 printf "Installing packages...\n"
 sudo apt-get update && sudo apt-get install -y zsh zip curl wget ripgrep tar \
-  gzip build-essential less xclip cmake tmux
+  gzip build-essential less xclip cmake tmux exa
 
 # tmux package manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && ~/.fzf/install
 
 # make zsh the default shell
 chsh -s $(which zsh)

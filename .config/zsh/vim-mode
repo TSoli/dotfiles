@@ -44,3 +44,7 @@ function vi-yank-xclip {
 
 zle -N vi-yank-xclip
 bindkey -M vicmd 'y' vi-yank-xclip
+
+# emacs like keybindings
+bindkey -M viins '^A' beginning-of-line 
+bindkey -M viins '^E' end-of-line

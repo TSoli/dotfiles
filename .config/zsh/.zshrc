@@ -15,14 +15,21 @@ unsetopt beep notify
 function zsh_add_file() {
     [ -f "$ZDOTDIR/$1" ] && source "$ZDOTDIR/$1"
 }
-zsh_add_file "vim-mode"
+
+# load fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Created by Zap installer
 [ -f "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh" ] && source "${XDG_DATA_HOME:-$HOME/.local/share}/zap/zap.zsh"
 plug "zsh-users/zsh-autosuggestions"
 plug "zap-zsh/supercharge"
-plug "zap-zsh/zap-prompt"
+# plug "zap-zsh/zap-prompt"
+plug "spaceship-prompt/spaceship-prompt"
 plug "zsh-users/zsh-syntax-highlighting"
+plug "zap-zsh/fzf"
+plug "zap-zsh/exa"
+
+zsh_add_file "vim-mode"
 
 # Load and initialise completion system
 autoload -Uz compinit
