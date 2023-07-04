@@ -45,6 +45,9 @@ function M.config()
   if not status_ok then
     vim.notify("Could not set '" .. M.name .. "' colorscheme.")
   end
+
+  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
 return M
