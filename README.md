@@ -65,6 +65,12 @@ Aborting
    [Nerd-Fonts](https://github.com/ryanoasis/nerd-fonts) which needs to be
    manually enabled for the terminal in order for some symbols to show.
 
+# Troubleshooting
+
+If it seems that `.zprofile` or `.zshrc` is not running properly on startup
+this is likely due to the terminal not running as a login shell. Therefore, you
+may need to change this setting in the terminal application itself.
+
 # Updating the config files
 
 Simply use the `config` alias from anywhere in the system as if it were `git`.
