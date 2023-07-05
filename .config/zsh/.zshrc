@@ -42,6 +42,12 @@ compinit
 # Load aliases
 emulate sh -c '. ~/.bash_aliases'
 
+# Add any setup specific to the current machine in this file
+if [[ -f .local_bashrc && -x .local_bashrc ]]
+then
+  emulate sh -c '. ~/.local_bashrc'
+fi
+
 # Adpated from https://www.markhansen.co.nz/auto-start-tmux/
 # Check tmux exists, we are in interactive mode and TMUX is not open
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [ -z "$TMUX" ]; then

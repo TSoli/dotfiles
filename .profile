@@ -26,10 +26,6 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# Run ssh agen on startup
-# eval `ssh-agent -s` 
-# ssh-add ~/.ssh/id_rsa
-#
 # # Launch ssh-agent
 # env=~/.ssh/agent.env
 #
