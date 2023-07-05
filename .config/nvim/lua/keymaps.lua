@@ -89,7 +89,6 @@ local maps = {
   { "x", "<A-k>", ":move '<-2<CR>gv-gv", "Move text up" },
 
   -- copy text
-  -- { "x", "<C-C>", "<cmd>'<, '>w !clip.exe<CR>", "Copy text" },
   { "x", "<leader>p", "\"_dP", "Paste over word (delte to void)" },  -- adds deleted word to void register instead
   { "n", "<leader>y", "\"+y", "Copy to system clipboard" },
   { "n", "<leader>Y", "\"+Y", "Copy to system clipboard" },

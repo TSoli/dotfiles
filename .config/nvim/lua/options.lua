@@ -39,7 +39,7 @@ local options = {
   tabstop = 2,                                    -- number of spaces used to represent a <Tab> in a file
   updatetime = 200,                               -- After this many ms of no typing write swap file to disk
   undofile = true,                                -- enable undofiles
-  undodir = configdir .. "/.undo/",               -- undofile directory
+  undodir = configdir .. "/.undo//",              -- undofile directory
   wrap = false,                                   -- whether lines wrap
   writebackup = true,                             -- enable backup before writing
 }
