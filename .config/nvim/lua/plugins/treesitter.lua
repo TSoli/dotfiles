@@ -45,7 +45,7 @@ function M.config()
       "tsx",
     },
     -- ensure_installed = "all", -- one of "all" or a list of languages
-    ignore_install = { "" },     -- List of parsers to ignore installing
+    ignore_install = { "latex" },     -- List of parsers to ignore installing
     sync_install = false,        -- install languages synchronously (only applied to `ensure_installed`)
 
     highlight = {
@@ -69,7 +69,7 @@ function M.config()
     rainbow = {
       enable = true,
        -- list of languages you want to disable the plugin for
-      disable = { },
+      disable = { "latex" },
       -- Which query to use for finding delimiters
       query = {
         "rainbow-parens",

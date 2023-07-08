@@ -7,12 +7,24 @@ local M = {
     -- OPTIONAL:
     --   `nvim-notify` is only needed, if you want to use the notification view.
     --   If not available, we use `mini` as the fallback
-    "rcarriga/nvim-notify",
+    {
+      "rcarriga/nvim-notify",
+      event = "VeryLazy",
+      opts = {
+        top_down = false, -- popups at the bottom
+      }
+    },
   },
 }
 
 function M.config()
   local noice = require("noice")
+  local notify = require("notify")
+
+  vim.keymap.set("n", "<leader>nq",
+    function() notify.dismiss({ silent = true, pending = true}) end,
+    { noremap = true, silent = true, desc = "Clear notifications"}
+  )
 
   noice.setup({
     -- defaults
