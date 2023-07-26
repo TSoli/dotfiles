@@ -43,12 +43,12 @@ curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 # (see https://github.com/neovim/neovim/wiki/Installing-Neovim#appimage-universal-linux-package)
 
 printf "Installing Hack Nerd Font...\n"
-base_font_url="https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/Hack/"
+base_font_url="https://api.github.com/repos/ryanoasis/nerd-fonts/contents/patched-fonts/Hack/"
 font_url_exts=("Regular/HackNerdFont-Regular.ttf" "Bold/HackNerdFont-Bold.ttf" \
-  "Italic/HackNerdFont-Italic.ttf" "BoldItalic/HackNerdFontMono-BoldItalic.ttf")
+  "Italic/HackNerdFont-Italic.ttf" "BoldItalic/HackNerdFont-BoldItalic.ttf")
 
 for ext in ${font_url_exts[@]}; do
-  curl -O "${base_font_url}${ext}"
+  curl -H "Accept: application/vnd.github.v3.raw" -LO "${base_font_url}${ext}"
 done
 
 mv -i *.ttf .local/share/fonts/
