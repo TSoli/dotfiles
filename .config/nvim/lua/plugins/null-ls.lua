@@ -72,6 +72,10 @@ function M.config()
       formatting.black.with { extra_args = {} },
       formatting.stylua,
       formatting.google_java_format,
+      formatting.latexindent.with({
+        filetypes = { "tex", "sty", "cls", "bib" },
+        args = { "-m" },  -- allows latexindent to modify linebreaks
+      }),
 
       -- diagnostics
       diagnostics.flake8,

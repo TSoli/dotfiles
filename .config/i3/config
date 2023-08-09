@@ -181,6 +181,13 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
+# add screenshot with flameshot
+bindsym Ctrl+Print exec "flameshot gui"
+
+gaps inner 8
+# gaps outer 8
+smart_gaps on
+
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -197,6 +204,9 @@ exec_always picom &
 
 # Start polybar
 exec_always ~/.config/polybar/launch.sh
+
+# use autotiling
+exec_always autotiling --limit 2
 
 # Use cinnamon settings
 exec --no-startup-id /usr/libexec/csd-xsettings

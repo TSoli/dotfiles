@@ -95,8 +95,8 @@ local maps = {
   { "v", "<leader>y", "\"+y", "Copy to system clipboard" },
 
   -- delete to void register
-  { "n", "<leader>dd", "\"_d", "Delete to void" },
-  { "v", "<leader>dd", "\"_d", "Delete to void" },
+  { "n", "<leader>d", "\"_d", "Delete to void" },
+  { "v", "<leader>d", "\"_d", "Delete to void" },
 
   -- Terminal --
 
@@ -126,15 +126,15 @@ local maps = {
   { "n", "<leader>u", "<cmd>UndotreeToggle<CR>", "Undotree: Toggle" },
 
   -- DAP
-  { "n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "DAP: Toggle breakpoint" },
-  { "n", "<leader>dc", "<cmd>lua require'dap'.continue()<cr>", "DAP: Continue" },
-  { "n", "<leader>di", "<cmd>lua require'dap'.step_into()<cr>", "DAP: Step into" },
-  { "n", "<leader>do", "<cmd>lua require'dap'.step_over()<cr>", "DAP: Step over" },
-  { "n", "<leader>dO", "<cmd>lua require'dap'.step_out()<cr>", "DAP: Step out" },
-  { "n", "<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", "DAP: Toggle REPL" },
-  { "n", "<leader>dl", "<cmd>lua require'dap'.run_last()<cr>", "DAP: Rerun last debug adapter" },
-  { "n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", "DAPUI: Toggle DAPUI" },
-  { "n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", "DAP: Terminate debug session" },
+  { "n", "<leader>bb", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "DAP: Toggle breakpoint" },
+  { "n", "<leader>bc", "<cmd>lua require'dap'.continue()<cr>", "DAP: Continue" },
+  { "n", "<leader>bi", "<cmd>lua require'dap'.step_into()<cr>", "DAP: Step into" },
+  { "n", "<leader>bo", "<cmd>lua require'dap'.step_over()<cr>", "DAP: Step over" },
+  { "n", "<leader>bO", "<cmd>lua require'dap'.step_out()<cr>", "DAP: Step out" },
+  { "n", "<leader>br", "<cmd>lua require'dap'.repl.toggle()<cr>", "DAP: Toggle REPL" },
+  { "n", "<leader>bl", "<cmd>lua require'dap'.run_last()<cr>", "DAP: Rerun last debug adapter" },
+  { "n", "<leader>bu", "<cmd>lua require'dapui'.toggle()<cr>", "DAPUI: Toggle DAPUI" },
+  { "n", "<leader>bt", "<cmd>lua require'dap'.terminate()<cr>", "DAP: Terminate debug session" },
 
   -- Lsp
   { "n", "<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = true }<cr>", "LSP: Format file" },

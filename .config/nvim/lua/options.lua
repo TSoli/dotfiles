@@ -48,6 +48,9 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
+-- Disable the default markdown style
+vim.g.markdown_recommended_style = 0
+
 -- default colour change in colorscheme
 vim.cmd("hi ColorColumn guibg=#1FDBE2")
 

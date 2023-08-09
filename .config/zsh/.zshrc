@@ -43,7 +43,7 @@ compinit
 emulate sh -c '. ~/.bash_aliases'
 
 # Add any setup specific to the current machine in this file
-if [[ -f .local_bashrc && -x .local_bashrc ]]
+if [[ -f ~/.local_bashrc && -x ~/.local_bashrc ]]
 then
   emulate sh -c '. ~/.local_bashrc'
 fi

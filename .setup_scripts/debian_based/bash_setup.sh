@@ -8,7 +8,7 @@ cd $HOME
 
 printf "Installing packages...\n"
 sudo apt-get update && sudo apt-get install -y zsh zip curl wget ripgrep tar \
-  gzip build-essential less xclip cmake tmux exa zathura xdotool
+  gzip build-essential less xclip cmake tmux exa zathura xdotool python3-pip
 
 # tmux package manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

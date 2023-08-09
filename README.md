@@ -117,4 +117,6 @@ For Neovim setup I mostly followed
 
 # TODO
 
-- Look into zsh, tmux, plugins?
+- Look into neorg
+- Customise polybar/look into other bars
+- see what else is useful to rice i3?
