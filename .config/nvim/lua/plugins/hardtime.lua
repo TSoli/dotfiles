@@ -8,8 +8,8 @@ function M.config()
 
   hardtime.setup({
      max_time = 1000,
-     max_count = 2,
-     disable_mouse = true,
+     max_count = 5,
+     disable_mouse = false,
      hint = true,
      notification = true,
      allow_different_key = false,

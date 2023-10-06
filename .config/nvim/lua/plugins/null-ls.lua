@@ -70,10 +70,11 @@ function M.config()
       --   -- end,
       -- },
       formatting.black.with { extra_args = {} },
+      formatting.isort,
       formatting.stylua,
       formatting.google_java_format,
       formatting.latexindent.with({
-        filetypes = { "tex", "sty", "cls", "bib" },
+        filetypes = { "tex", "sty", "cls" },
         args = { "-m" },  -- allows latexindent to modify linebreaks
       }),
 
