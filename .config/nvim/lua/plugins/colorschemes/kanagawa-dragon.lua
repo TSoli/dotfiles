@@ -22,15 +22,26 @@ function M.config()
     typeStyle = {},
     theme = "dragon",
     overrides = function(colors)
+      local utils = require("plugins.colorschemes.utils")
+      local bg = colors.theme.ui.bg
       return {
-        -- For ts-rainbow2 bracket coloring
-        TSRainbowRed = { fg = colors.palette.dragonRed },
-        TSRainbowYellow = { fg = colors.palette.autumnYellow },
-        TSRainbowBlue = { fg = colors.palette.springBlue },
-        TSRainbowOrange = { fg = colors.palette.surimiOrange },
-        TSRainbowGreen = { fg = colors.palette.springGreen },
-        TSRainbowViolet = { fg = colors.palette.oniViolet },
-        TSRainbowCyan = { fg = colors.palette.waveAqua1 },
+        -- For rainbow-delimiters coloring
+        RainbowDelimiterRed = { fg = colors.palette.dragonRed },
+        RainbowDelimiterYellow = { fg = colors.palette.autumnYellow },
+        RainbowDelimiterBlue = { fg = colors.palette.springBlue },
+        RainbowDelimiterOrange = { fg = colors.palette.surimiOrange },
+        RainbowDelimiterGreen = { fg = colors.palette.springGreen },
+        RainbowDelimiterViolet = { fg = colors.palette.oniViolet },
+        RainbowDelimiterCyan = { fg = colors.palette.waveAqua1 },
+
+        -- For backgrounds
+        RainbowDelimiterBGRed = { bg = utils.blend_colors(colors.palette.dragonRed, bg, 0.2) },
+        RainbowDelimiterBGYellow = { bg = utils.blend_colors(colors.palette.autumnYellow, bg, 0.2) },
+        RainbowDelimiterBGBlue = { bg = utils.blend_colors(colors.palette.springBlue, bg, 0.2) },
+        RainbowDelimiterBGOrange = { bg = utils.blend_colors(colors.palette.surimiOrange, bg, 0.2) },
+        RainbowDelimiterBGGreen = { bg = utils.blend_colors(colors.palette.springGreen, bg, 0.2) },
+        RainbowDelimiterBGViolet = { bg = utils.blend_colors(colors.palette.oniViolet, bg, 0.2) },
+        RainbowDelimiterBGCyan = { bg = utils.blend_colors(colors.palette.waveAqua1, bg, 0.2) },
 
         -- for line numbers
         CursorLineNr = { fg = colors.palette.dragonOrange, },

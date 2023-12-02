@@ -196,17 +196,20 @@ bindsym $mod+r mode "resize"
 #         status_command i3status
 # }
 
+# Use cinnamon settings
+exec --no-startup-id /usr/libexec/csd-xsettings
+
 # set the wallpaper
 exec_always feh --bg-fill /usr/share/backgrounds/default_background.jpg
 
 # Start picom
 exec_always picom &
 
-# Start polybar
-exec_always ~/.config/polybar/launch.sh
-
 # use autotiling
 exec_always autotiling --limit 2
 
-# Use cinnamon settings
-exec --no-startup-id /usr/libexec/csd-xsettings
+# Start polybar
+exec_always ~/.config/polybar/launch.sh
+
+# Low battery warnings
+exec --no-startup-id i3-battery-popup -n

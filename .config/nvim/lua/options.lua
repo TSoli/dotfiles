@@ -22,6 +22,7 @@ local options = {
   mouse = "a",                                    -- allow mouse in modes (n - normal, v - visual, i - insert, a - all see options for more)
   number = true,                                  -- add line numbers
   numberwidth = 2,                                -- set min number column width
+  -- pumblend = 20,                                  -- set pop up menu opacity
   pumheight = 8,                                  -- pop up menu height for autocomplete
   relativenumber = true,                          -- display relative line numbers
   scrolloff = 8,                                  -- min num of lines above/below cursor

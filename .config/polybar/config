@@ -70,11 +70,12 @@ font-3 = siji:pixelsize=10;1
 
 modules-left = i3
 ; modules-center = mpd
-modules-right = xbacklight pulseaudio memory cpu wlan eth battery temperature date powermenu
+modules-right = xbacklight memory cpu wlan eth battery temperature date pulseaudio tray powermenu 
 
-tray-position = right
-tray-padding = 2
-;tray-background = #0063ff
+; tray-position = right
+; tray-padding = 0
+; tray-background = ${colors.background}
+; tray-foreground = ${colors.foreground}
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -89,6 +90,10 @@ tray-padding = 2
 
 cursor-click = pointer
 cursor-scroll = ns-resize
+
+[module/tray]
+type = internal/tray
+tray-padding = 5
 
 [module/xwindow]
 type = internal/xwindow
