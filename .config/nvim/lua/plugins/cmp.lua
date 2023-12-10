@@ -84,9 +84,9 @@ function M.config()
 			-- Set `select` to `false` to only confirm explicitly selected items.
 			["<CR>"] = cmp.mapping.confirm({ select = true }),
 			["<Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_next_item()
-				elseif luasnip.expandable() then
+				-- if cmp.visible() then
+				-- 	cmp.select_next_item()
+				if luasnip.expandable() then
 					luasnip.expand()
 				elseif luasnip.expand_or_jumpable() then
 					luasnip.expand_or_jump()
@@ -100,9 +100,9 @@ function M.config()
 				"s",
 			}),
 			["<S-Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_prev_item()
-				elseif luasnip.jumpable(-1) then
+				-- if cmp.visible() then
+				-- 	cmp.select_prev_item()
+				if luasnip.jumpable(-1) then
 					luasnip.jump(-1)
 				else
 					fallback()
@@ -120,6 +120,7 @@ function M.config()
 					nvim_lsp = "[LSP]",
 					nvim_lua = "[NVIM_LSP]",
 					luasnip = "{Snippet}",
+					spell = "[Text]",
 					buffer = "[Buffer]",
 					path = "[Path]",
 					emoji = "[Emoji]",
@@ -138,8 +139,10 @@ function M.config()
 				option = {
 					keep_all_entries = false,
 					enable_in_context = function()
-            local ft = vim.bo.filetype
-						return require("cmp.config.context").in_treesitter_capture("spell") or ft == "tex" or ft == "sty"
+						local ft = vim.bo.filetype
+						return require("cmp.config.context").in_treesitter_capture("spell")
+							or ft == "tex"
+							or ft == "sty"
 					end,
 				},
 			},
