@@ -2,7 +2,7 @@ local M = {
 	"zbirenbaum/copilot.lua",
 	cmd = "Copilot",
 	event = "InsertEnter",
-	enabled = false,
+	enabled = true,
 }
 
 function M.config()
@@ -30,8 +30,8 @@ function M.config()
 			debounce = 75,
 			keymap = {
 				accept = "<M-L>",
-				accept_word = "<M-l>",
-				accept_line = false,
+				accept_word = false,
+				accept_line = "<M-l>",
 				next = "<M-]>",
 				prev = "<M-[>",
 				dismiss = "<C-]>",

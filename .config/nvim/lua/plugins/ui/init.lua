@@ -11,6 +11,7 @@ local ui_plugins = {
 	"noice",
 	"nvim-tree",
 	"rainbow-delimiters",
+	"scrollbar",
 	"tmux-navigator",
 	"todo-comments",
 	"toggleterm",
