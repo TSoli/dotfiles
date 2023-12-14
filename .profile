@@ -54,3 +54,5 @@ fi
 # set the default editor to be neovim
 export VISUAL=nvim
 export EDITOR=$VISUAL
+
+export ZK_NOTEBOOK_DIR="$HOME/notes"

@@ -55,3 +55,8 @@ vim.g.markdown_recommended_style = 0
 
 -- default colour change in colorscheme
 vim.cmd("hi ColorColumn guibg=#1FDBE2")
+
+print(vim.fn.getcwd())
+
+-- enable filetype plugins
+vim.cmd("filetype plugin on")
