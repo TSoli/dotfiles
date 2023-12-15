@@ -55,3 +55,7 @@ if command -v tmux &> /dev/null && [ -n "$PS1" ] && [ -z "$TMUX" ]; then
   # Create session 'main' or attach to 'main' if already exists.
   tmux new-session -A -s main
 fi
+
+[[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
+
+eval $(ssh-agent) &>/dev/null

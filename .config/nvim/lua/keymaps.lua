@@ -114,6 +114,7 @@ local maps = {
 	{ "n", "<leader>fp", ":Telescope projects<CR>", "Telescope: Find projects" },
 	{ "n", "<leader>fb", ":Telescope buffers<CR>", "Telescope: Find buffers" },
 	{ "n", "<leader>fh", ":Telescope help_tags<CR>", "Telescope: Find help tags" },
+	{ "n", "<leader>fj", ":Telescope jumplist<CR>", "Telescope: Find jumplist" },
 
 	-- Git
 	{ "n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Toggle lazy git" },
@@ -147,15 +148,20 @@ local maps = {
 	-- zk
 	-- see ftplugin/markdown for more keymaps
 	-- Create a new note after asking for its title.
-	{ "n", "<leader>nn", "<Cmd>ZkNew { title = vim.fn.input('Title 󰙏 ') }<CR>" },
+	{ "n", "<leader>nn", "<Cmd>ZkNew { title = vim.fn.input('Title 󰙏 ') }<CR>", "zk: Create New note" },
 	-- Open notes.
-	{ "n", "<leader>no", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>" },
+	{ "n", "<leader>nr", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>", "zk: Notes recent" },
 	-- Open notes associated with the selected tags.
-	{ "n", "<leader>nt", "<Cmd>ZkTags<CR>" },
+	{ "n", "<leader>nt", "<Cmd>ZkTags<CR>", "zk: Search notes by Tag" },
 	-- Search for the notes matching a given query.
-	{ "n", "<leader>nf", "<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search 󰙏 ') } }<CR>" },
+	{
+		"n",
+		"<leader>nf",
+		"<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search 󰙏 ') } }<CR>",
+		"zk: Note Find",
+	},
 	-- Search for the notes matching the current visual selection.
-	{ "v", "<leader>nf", ":'<,'>ZkMatch<CR>" },
+	{ "v", "<leader>nf", ":'<,'>ZkMatch<CR>", "zk: Note Find" },
 }
 
 local term_maps = {

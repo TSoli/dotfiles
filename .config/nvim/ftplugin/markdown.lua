@@ -1,40 +1,59 @@
 -- binds for zk
 if require("zk.util").notebook_root(vim.fn.expand("%:p")) ~= nil then
-	local function map(...)
-		vim.api.nvim_buf_set_keymap(0, ...)
+	local maps = {
+		-- Open the link under the caret.
+		-- { "n", "<CR>", "<Cmd>lua vim.lsp.buf.definition()<CR>" },
+		{ "n", "<bs>", ":edit #<cr>", "Go to previous page" },
+
+		-- Create a new note after asking for its title.
+		-- This overrides the global `<leader>zn` mapping to create the note in the same directory as the current buffer.
+		{
+			"n",
+			"<localleader>nn",
+			"<Cmd>ZkNew { dir = vim.fn.expand('%:p:h'), title = vim.fn.input('Title 󰙏 ') }<CR>",
+		},
+		-- Create a new note in the same directory as the current buffer, using the current selection for title.
+		{ "v", "<localleader>nnt", ":'<,'>ZkNewFromTitleSelection { dir = vim.fn.expand('%:p:h') }<CR>" },
+		-- Create a new note in the same directory as the current buffer, using the current selection for note content and asking for its title.
+		{
+			"v",
+			"<localleader>nnc",
+			":'<,'>ZkNewFromContentSelection { dir = vim.fn.expand('%:p:h'), title = vim.fn.input('Title 󰙏 ') }<CR>",
+		},
+
+		-- Open notes linking to the current buffer.
+		{ "n", "<localleader>nb", "<Cmd>ZkBacklinks<CR>" },
+		-- Alternative for backlinks using pure LSP and showing the source context.
+		--{'n', '<leader>zb', '<Cmd>lua vim.lsp.buf.references()<CR>'},
+		-- Open notes linked by the current buffer.
+		{ "n", "<localleader>nl", "<Cmd>ZkLinks<CR>" },
+
+		-- Preview a linked note.
+		{ "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>" },
+		-- Open the code actions for a visual selection.
+		{ "v", "<localleader>na", ":'<,'>lua vim.lsp.buf.range_code_action()<CR>" },
+	}
+
+	for _, map in ipairs(maps) do
+		local mode, bind, cmd, description = unpack(map)
+		vim.api.nvim_buf_set_keymap(0, mode, bind, cmd, { noremap = true, silent = false, desc = description })
 	end
-	local opts = { noremap = true, silent = false }
 
-	-- Open the link under the caret.
-	map("n", "<CR>", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	local close_all_notes = function()
+		for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+			local buf_name = vim.api.nvim_buf_get_name(buf)
+			local is_zk_buf = require("zk.util").notebook_root(buf_name) ~= nil
+			local is_modified = vim.api.nvim_buf_get_option(buf, "modified")
+			if vim.api.nvim_buf_is_loaded(buf) and is_zk_buf and not is_modified then
+				vim.api.nvim_buf_delete(buf, { force = false })
+			end
+		end
+	end
 
-	-- Create a new note after asking for its title.
-	-- This overrides the global `<leader>zn` mapping to create the note in the same directory as the current buffer.
-	map(
-		"n",
-		"<localleader>nn",
-		"<Cmd>ZkNew { dir = vim.fn.expand('%:p:h'), title = vim.fn.input('Title 󰙏 ') }<CR>",
-		opts
-	)
-	-- Create a new note in the same directory as the current buffer, using the current selection for title.
-	map("v", "<localleader>nnt", ":'<,'>ZkNewFromTitleSelection { dir = vim.fn.expand('%:p:h') }<CR>", opts)
-	-- Create a new note in the same directory as the current buffer, using the current selection for note content and asking for its title.
-	map(
-		"v",
-		"<localleader>nnc",
-		":'<,'>ZkNewFromContentSelection { dir = vim.fn.expand('%:p:h'), title = vim.fn.input('Title 󰙏 ') }<CR>",
-		opts
-	)
-
-	-- Open notes linking to the current buffer.
-	map("n", "<localleader>nb", "<Cmd>ZkBacklinks<CR>", opts)
-	-- Alternative for backlinks using pure LSP and showing the source context.
-	--map('n', '<leader>zb', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
-	-- Open notes linked by the current buffer.
-	map("n", "<localleader>nl", "<Cmd>ZkLinks<CR>", opts)
-
-	-- Preview a linked note.
-	map("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
-	-- Open the code actions for a visual selection.
-	map("v", "<localleader>na", ":'<,'>lua vim.lsp.buf.range_code_action()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(0, "n", "<localleader>nq", "", {
+		noremap = true,
+		silent = false,
+		desc = "Close all notes",
+		callback = close_all_notes,
+	})
 end
