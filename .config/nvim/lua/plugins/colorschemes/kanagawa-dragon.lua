@@ -9,6 +9,7 @@ M.name = "kanagawa"
 
 function M.config()
 	local kanagawa = require(M.name)
+	local utils = require("plugins.colorschemes.utils")
 
 	-- required to set a theme below
 	vim.o.background = nil
@@ -21,10 +22,29 @@ function M.config()
 		typeStyle = {},
 		theme = "dragon",
 		overrides = function(colors)
-			local utils = require("plugins.colorschemes.utils")
 			local bg = colors.theme.ui.bg
 			local scrollbar_bg = utils.blend_colors(colors.theme.ui.special, bg, 0.4)
 			return {
+				-- transparent background
+				-- Normal = { bg = "none" },
+				-- NormalFloat = { bg = "none" },
+				-- FoldColumn = { bg = "none" },
+				-- Tabline = { bg = "none" },
+				-- TablineSel = { bg = "none" },
+				-- TablineFill = { bg = "none" },
+				-- StatusLine = { bg = "none" },
+				-- StatusLineNC = { bg = "none" },
+				-- WinBar = { bg = "none" },
+				-- WinBarNC = { bg = "none" },
+				-- FloatBorder = { bg = "none" },
+
+				-- for line numbers
+				LineNr = { bg = "none" },
+				CursorLineNr = { fg = colors.palette.dragonOrange, bg = "none" },
+
+				-- ruler colour
+				-- ColorColumn = { bg = utils.blend_colors(colors.palette.winterRed, bg, 1) },
+
 				-- For rainbow-delimiters coloring
 				RainbowDelimiterRed = { fg = colors.palette.dragonRed },
 				RainbowDelimiterYellow = { fg = colors.palette.autumnYellow },
@@ -42,12 +62,6 @@ function M.config()
 				RainbowDelimiterBGGreen = { bg = utils.blend_colors(colors.palette.springGreen, bg, 0.2) },
 				RainbowDelimiterBGViolet = { bg = utils.blend_colors(colors.palette.oniViolet, bg, 0.2) },
 				RainbowDelimiterBGCyan = { bg = utils.blend_colors(colors.palette.waveAqua1, bg, 0.2) },
-
-				-- for line numbers
-				CursorLineNr = { fg = colors.palette.dragonOrange },
-
-				-- ruler colour
-				ColorColumn = { bg = colors.palette.winterRed },
 
 				-- scrollbar
 				ScrollbarHandle = { bg = scrollbar_bg },
@@ -80,8 +94,8 @@ function M.config()
 		vim.notify("Could not set '" .. M.name .. "' colorscheme.")
 	end
 
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+	-- set tranparent backgrounds
+	utils.set_transparent_background()
 end
 
 return M

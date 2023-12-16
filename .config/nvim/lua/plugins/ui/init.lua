@@ -12,9 +12,11 @@ local ui_plugins = {
 	"nvim-tree",
 	"rainbow-delimiters",
 	"scrollbar",
+	"statuscol",
 	"tmux-navigator",
 	"todo-comments",
 	"toggleterm",
+	"ufo",
 }
 
 for _, v in ipairs(ui_plugins) do

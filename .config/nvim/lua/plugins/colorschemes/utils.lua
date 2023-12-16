@@ -4,16 +4,16 @@ local M = {}
 -- @tparam number nValue the 8 bit unsigned integer
 -- @treturn string the two digit hex number
 local function dec2hex(nValue) -- http://www.indigorose.com/forums/threads/10192-Convert-Hexadecimal-to-Decimal
-  if type(nValue) == "string" then
-    nValue = String.ToNumber(nValue);
-  end
-  local nHexVal = string.format("%x", nValue);  -- %X returns uppercase hex, %x gives lowercase letters
-  local sHexVal = nHexVal.."";
-  if nValue < 16 then
-    return "0"..tostring(sHexVal)
-  else
-    return sHexVal
-  end
+	if type(nValue) == "string" then
+		nValue = String.ToNumber(nValue)
+	end
+	local nHexVal = string.format("%x", nValue) -- %X returns uppercase hex, %x gives lowercase letters
+	local sHexVal = nHexVal .. ""
+	if nValue < 16 then
+		return "0" .. tostring(sHexVal)
+	else
+		return sHexVal
+	end
 end
 
 --- blend two hex colors
@@ -22,12 +22,42 @@ end
 -- @tparam number 0-1 indicates how much of color 1 to blend into color2
 -- @treturn string the blended hex code
 function M.blend_colors(color1, color2, blend)
-  local r1, g1, b1 = string.match(color1, "#([0-9a-fA-F][0-9a-fA-F])([0-9a-fA-F][0-9a-fA-F])([0-9a-fA-F][0-9a-fA-F])")
-  local r2, g2, b2 = string.match(color2, "#([0-9a-fA-F][0-9a-fA-F])([0-9a-fA-F][0-9a-fA-F])([0-9a-fA-F][0-9a-fA-F])")
-  local r3 = math.floor(tonumber(r1, 16)*(blend) + tonumber(r2, 16)*(1-blend))
-  local g3 = math.floor(tonumber(g1, 16)*(blend) + tonumber(g2, 16)*(1-blend))
-  local b3 = math.floor(tonumber(b1, 16)*(blend) + tonumber(b2, 16)*(1-blend))
-  return "#"..dec2hex(r3).. dec2hex(g3)..dec2hex(b3)
+	local r1, g1, b1 = string.match(color1, "#([0-9a-fA-F][0-9a-fA-F])([0-9a-fA-F][0-9a-fA-F])([0-9a-fA-F][0-9a-fA-F])")
+	local r2, g2, b2 = string.match(color2, "#([0-9a-fA-F][0-9a-fA-F])([0-9a-fA-F][0-9a-fA-F])([0-9a-fA-F][0-9a-fA-F])")
+	local r3 = math.floor(tonumber(r1, 16) * blend + tonumber(r2, 16) * (1 - blend))
+	local g3 = math.floor(tonumber(g1, 16) * blend + tonumber(g2, 16) * (1 - blend))
+	local b3 = math.floor(tonumber(b1, 16) * blend + tonumber(b2, 16) * (1 - blend))
+	return "#" .. dec2hex(r3) .. dec2hex(g3) .. dec2hex(b3)
+end
+
+function M.mod_hl(hl_name, opts)
+	local is_ok, hl_def = pcall(vim.api.nvim_get_hl_by_name, hl_name, true)
+	if is_ok then
+		for k, v in pairs(opts) do
+			hl_def[k] = v
+		end
+		vim.api.nvim_set_hl(0, hl_name, hl_def)
+	end
+end
+
+function M.set_transparent_background()
+	local highlights = {
+		"Normal",
+		"NormalFloat",
+		"FoldColumn",
+		"Tabline",
+		"TablineSel",
+		"TablineFill",
+		"StatusLine",
+		"StatusLineNC",
+		"WinBar",
+		"WinBarNC",
+		"FloatBorder",
+	}
+
+	for _, highlight in ipairs(highlights) do
+		M.mod_hl(highlight, { bg = "none" })
+	end
 end
 
 return M

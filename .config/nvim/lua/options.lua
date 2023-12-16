@@ -8,13 +8,20 @@ local options = {
 	cmdheight = 2, -- command line height
 	colorcolumn = { "80" }, -- set vertical rule
 	completeopt = { "menu", "menuone", "preview" }, -- autocomplete options
-	conceallevel = 0, -- show concealed text
+	conceallevel = 2, -- show concealed text
 	cursorline = true, -- highlight current line
 	cursorlineopt = "number", -- highlight current line number
 	dir = configdir .. "/.swp//", -- swap file directory
 	expandtab = true, -- make tabs spaces
 	exrc = true,
-	fileencoding = "utf-8", -- encoding applied to files when writte
+	fileencoding = "utf-8", -- encoding applied to files when write
+	fillchars = [[eob: ,fold: ,foldopen:,foldclose:]],
+	foldcolumn = "1",
+	foldenable = true, -- enable folds
+	foldexpr = "nvim_treesitter#foldexpr()",
+	foldlevel = 99, -- folds with a higher number will be closed so 99 means no higher levels are closed
+	foldlevelstart = 99, -- same as above but on entry
+	foldmethod = "expr",
 	hlsearch = true, -- search highlighting
 	incsearch = true, -- show where the pattern as it is typed
 	ignorecase = true, -- ignore case when searching
@@ -55,8 +62,6 @@ vim.g.markdown_recommended_style = 0
 
 -- default colour change in colorscheme
 vim.cmd("hi ColorColumn guibg=#1FDBE2")
-
-print(vim.fn.getcwd())
 
 -- enable filetype plugins
 vim.cmd("filetype plugin on")

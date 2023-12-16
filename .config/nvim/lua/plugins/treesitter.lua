@@ -1,7 +1,7 @@
 -- Treesitter
 local M = {
 	"nvim-treesitter/nvim-treesitter",
-	event = "BufReadPost",
+	event = "BufReadPre",
 	dependencies = {
 		{
 			"windwp/nvim-autopairs", -- auto close brackets/quotes
@@ -29,6 +29,8 @@ local M = {
 function M.config()
 	local treesitter = require("nvim-treesitter")
 	local configs = require("nvim-treesitter.configs")
+	-- vim.opt.foldmethod = "expr"
+	-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 	configs.setup({
 		-- put the language you want in this array

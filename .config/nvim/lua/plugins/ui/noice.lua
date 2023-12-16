@@ -20,10 +20,25 @@ local M = {
 function M.config()
 	local noice = require("noice")
 	local notify = require("notify")
+	local mod_hl = require("plugins.colorschemes.utils").mod_hl
 
 	vim.keymap.set("n", "<leader>mq", function()
 		notify.dismiss({ silent = true, pending = true })
 	end, { noremap = true, silent = true, desc = "Clear notifications" })
+
+	-- transparent popups
+	local noice_hl = vim.api.nvim_create_augroup("NoiceHighlights", {})
+	vim.api.nvim_clear_autocmds({ group = noice_hl })
+	vim.api.nvim_create_autocmd("BufEnter", {
+		group = noice_hl,
+		desc = "redefinition of noice highlight groups",
+		callback = function()
+			local diagnostic_types = { "Info", "Warn" }
+			for _, type in ipairs(diagnostic_types) do
+				mod_hl("DiagnosticSign" .. type, { bg = "none" })
+			end
+		end,
+	})
 
 	noice.setup({
 		-- defaults
