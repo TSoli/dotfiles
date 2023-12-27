@@ -4,6 +4,7 @@ local ui_plugins = {
 	"bufferline",
 	"colorizer",
 	"eyeliner",
+	"flash",
 	"gitsigns",
 	"illuminate",
 	"indentline",
@@ -16,7 +17,9 @@ local ui_plugins = {
 	"tmux-navigator",
 	"todo-comments",
 	"toggleterm",
+	"trouble",
 	"ufo",
+	"which-key",
 }
 
 for _, v in ipairs(ui_plugins) do

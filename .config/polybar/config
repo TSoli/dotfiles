@@ -428,25 +428,39 @@ format-spacing = 1
 
 label-open = 
 label-open-foreground = ${colors.alert}
-label-close =  cancel
-label-close-foreground = ${colors.alert}
+; label-close =  cancel
+label-close = 󰜺
+; label-close-foreground = ${colors.alert}
 label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
+menu-0-0 = 󰒲
+menu-0-0-foreground = ${colors.green}
+menu-0-0-exec = menu-open-3
+menu-0-1 = 󰜉
+menu-0-1-foreground = ${colors.primary-opaque}
+menu-0-1-exec = menu-open-1
+menu-0-2 = 
+menu-0-2-foreground = ${colors.alert}
+menu-0-2-exec = menu-open-2
 
-menu-1-0 = cancel
+menu-1-0 = 󰌑
 menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
+menu-1-1 = 󰜉
+menu-1-1-foreground = ${colors.primary-opaque}
 menu-1-1-exec = reboot
 
-menu-2-0 = power off
+menu-2-0 = 
+menu-2-0-foreground = ${colors.alert}
 menu-2-0-exec = shutdown now
-menu-2-1 = cancel
+menu-2-1 = 󰌑
 menu-2-1-exec = menu-open-0
+
+menu-3-0 = 󰌑
+menu-3-0-exec = menu-open-0
+menu-3-1 = 󰒲
+menu-3-1-foreground = ${colors.green}
+menu-3-1-exec = systemctl suspend
 
 [settings]
 screenchange-reload = true

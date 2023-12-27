@@ -48,7 +48,7 @@ local maps = {
 	{ "n", "<leader>h", "<cmd>nohlsearch<CR>", "Clear highlights" },
 
 	-- Close buffers
-	{ "n", "<leader>q", "<cmd>Bdelete<CR>", "Close buffer" },
+	{ "n", "<leader>bd", "<cmd>Bdelete<CR>", "Close buffer" },
 
 	{ "n", "J", "mzJ`z", "Append line below" }, -- stops cursor from moving
 
@@ -62,7 +62,7 @@ local maps = {
 	-- see :help insert-index for a full list of commands
 	-- see :imap
 	{ "i", "jk", "<ESC>", "Exit insert" }, -- exit insert with jk
-	{ "i", "kj", "<ESC>", "Exit insert" }, -- exit insert with kk
+	{ "i", "kj", "<ESC>", "Exit insert" }, -- exit insert with kj
 
 	-- Visual --
 	-- see :help visual-index for a full list of commands

@@ -1,0 +1,53 @@
+#!/bin/sh
+#
+# Extra options are from i3lock-color https://github.com/Raymo111/i3lock-color
+
+TRANSPARENT='#18161655'
+# BLANK='#00000000'
+BLANK=$TRANSPARENT
+# CLEAR='#ffffff22'
+CLEAR=$TRANSPARENT
+DEFAULT='#8a9a7bcc'
+WRONG='#E82424ee'
+# TEXT='#c4746eee'
+# VERIFYING='#8ba4b0'
+VERIFYING='#2D4F67cc'
+# roninYellow
+# TEXT='#FF9E3B'
+# oldwhite
+TEXT='#C8C093'
+# dragonwhite
+# TEXT='#c5c9c5'
+# pure white
+# TEXT='#ffffff'
+ENTRY=$TEXT
+# ENTRY='#98BB6C'
+
+i3lock \
+--nofork \
+--radius 100                \
+--insidever-color=$CLEAR     \
+--ringver-color=$VERIFYING   \
+\
+--insidewrong-color=$CLEAR   \
+--ringwrong-color=$WRONG     \
+\
+--inside-color=$BLANK        \
+--ring-color=$DEFAULT        \
+--line-color=$BLANK          \
+--separator-color=$DEFAULT   \
+\
+--verif-color=$TEXT          \
+--wrong-color=$TEXT          \
+--time-color=$TEXT           \
+--date-color=$TEXT           \
+--layout-color=$TEXT         \
+--keyhl-color=$ENTRY         \
+--bshl-color=$WRONG          \
+\
+--screen 1                   \
+--blur 5                     \
+--clock                      \
+--indicator                  \
+--time-str="%H:%M:%S"        \
+--date-str="%A, %Y-%m-%d"       \

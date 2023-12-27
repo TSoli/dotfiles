@@ -1,0 +1,81 @@
+* {
+  bg: #18161655;
+  bg-alt: #28272788;
+  bg-selected: #C8C093aa;
+
+  fg: #C8C093;
+  fg-alt: #c5c9c5;
+  fg-selected: #12120f;
+  comment: #737c73cc;
+  gray: #7a838255;
+
+  
+  border: 0;
+  margin: 0;
+  padding: 0;
+  spacing: 0;
+}
+
+window {
+  width: 45%;
+  background-color: @bg;
+}
+
+element {
+  padding: 8 12;
+  background-color: transparent;
+  text-color: @fg-alt;
+}
+
+element selected {
+  text-color: @fg-selected;
+  background-color: @bg-selected;
+}
+
+element-text {
+  background-color: transparent;
+  text-color: inherit;
+  vertical-align: 0.5;
+}
+
+element-icon {
+  size: 30;
+  padding: 0 10 0 0;
+  background-color: transparent;
+}
+
+entry {
+  padding: 12;
+  background-color: @bg-alt;
+  text-color: @fg-alt;
+}
+
+inputbar {
+  children: [prompt, entry];
+  background-color: @bg;
+}
+
+listview {
+  background-color: @bg;
+  columns: 1;
+  lines: 10;
+  scrollbar: true;
+}
+
+scrollbar {
+  background-color: @bg;
+  handle-color: @gray;
+  handle-width: 12;
+}
+
+mainbox {
+  children: [inputbar, listview];
+  background-color: @bg;
+}
+
+prompt {
+  enabled: true;
+  padding: 12 0 0 12;
+  background-color: @bg-alt;
+  text-color: @fg;
+}
