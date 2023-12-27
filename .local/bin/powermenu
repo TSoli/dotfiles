@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# Options
+shutdown="Shutdown"
+lock="Lock"
+reboot="Reboot"
+suspend="Suspend"
+logout="Log Out"
+hibernate="Hibernate"
+cancel="Cancel"
+
+# symbols
+shutdown_symbol="system-shutdown"
+lock_symbol="system-lock-screen"
+reboot_symbol="system-reboot"
+suspend_symbol="system-suspend"
+logout_symbol="system-log-out"
+hibernate_symbol="system-hibernate"
+cancel_symbol="gtk-cancel"
+
+confirm_cmd() {
+  selected="$(confirm_prompt "$1" "$2")"
+  case "$selected" in
+    $shutdown) shutdown now ;;
+    $reboot) reboot ;;
+    $logout) i3-msg exit ;;
+    $cancel) open_powermenu ;;
+    *) exit 1 ;;
+  esac
+}
+
+confirm_prompt() {
+  echo -en "$1\0icon\x1f$2\n$cancel\0icon\x1f$cancel_symbol" |
+    rofi -dmenu -theme-str '@import "confirmation.rasi"'
+}
+
+open_powermenu() {
+  selected=$(echo -en "$shutdown\0icon\x1f$shutdown_symbol
+$reboot\0icon\x1f$reboot_symbol
+$suspend\0icon\x1f$suspend_symbol
+$lock\0icon\x1f$lock_symbol
+$logout\0icon\x1f$logout_symbol
+$hibernate\0icon\x1f$hibernate_symbol" |
+  rofi -dmenu -i -theme-str '@import "powermenu.rasi"')
+
+  case "$selected" in
+    $shutdown) confirm_cmd "$shutdown" "$shutdown_symbol" ;;
+    $reboot) confirm_cmd "$reboot" "$reboot_symbol" ;;
+    $logout) confirm_cmd "$logout" "$logout_symbol" ;;
+    $suspend) systemctl suspend ;;
+    $lock) $HOME/.config/i3/lock.sh ;;
+    $hibernate) systemctl hibernate ;;
+    *) exit 1 ;;
+  esac
+}
+
+open_powermenu
