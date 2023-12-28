@@ -5,6 +5,7 @@ configuration {
   display-drun: "Apps:";
   drun-display-format: "{icon} {name} [<span weight='light' size='small' fgalpha='50%'><i>({generic})</i></span>] [<span weight='light' size='small' fgalpha='50%'>{comment}</span>]";
   show-icons: true;
+  kb-cancel: "Escape,Control+g,Control+bracketleft,Super+Q";
 /*	location: 0;*/
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/

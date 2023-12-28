@@ -1,16 +1,20 @@
-// mainbox {
-//   children: [listview];
-// }
+mainbox {
+  children: [listview];
+}
 
-prompt {
+entry {
   enabled: false;
 }
 
-window {
-  width: 20%;
-}
-
-listview {
-  lines: 6;
-  scrollbar: false;
-}
+ prompt {
+   enabled: false;
+ }
+ 
+ window {
+   width: 20%;
+ }
+ 
+ listview {
+   lines: 6;
+   scrollbar: false;
+ }

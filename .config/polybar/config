@@ -72,7 +72,7 @@ padding-left = 0
 padding-right = 0
 
 module-margin-left = 1
-module-margin-right = 2
+module-margin-right = 1
 
 font-0 = Hack Nerd Font:style=Regular
 font-1 = fixed:pixelsize=10;1
@@ -81,7 +81,7 @@ font-3 = siji:pixelsize=10;1
 
 modules-left = i3
 ; modules-center = mpd
-modules-right = xbacklight memory cpu wlan eth battery temperature date pulseaudio tray powermenu 
+modules-right = xbacklight memory cpu wlan eth battery temperature date pulseaudio tray search powermenu 
 
 ; tray-position = right
 ; tray-padding = 0
@@ -421,9 +421,9 @@ ramp-2-foreground = ${colors.alert}
 
 [module/powermenu]
 type = custom/text
+content = "⏻"
 content-background = ${colors.alert}
 content-foreground = ${colors.background}
-content = "⏻"
 content-padding = 1
 click-left = powermenu
 
@@ -469,6 +469,11 @@ click-left = powermenu
 ; menu-3-1 = 󰒲
 ; menu-3-1-foreground = ${colors.green}
 ; menu-3-1-exec = systemctl suspend
+
+[module/search]
+type = custom/text
+content = 
+click-left = rofi -show drun
 
 [settings]
 screenchange-reload = true
