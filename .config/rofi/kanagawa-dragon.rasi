@@ -8,6 +8,7 @@
   fg-selected: #12120f;
   comment: #737c73cc;
   gray: #7a838255;
+  error: #E82424; 
 
   
   border: 0;
@@ -78,4 +79,18 @@ prompt {
   padding: 12 0 0 12;
   background-color: @bg-alt;
   text-color: @fg;
+}
+
+message {
+  background-color: @bg;
+}
+
+error-message {
+  background-color: @bg;
+  padding: 1%;
+}
+
+textbox {
+  background-color: @bg;
+  text-color: @error;
 }

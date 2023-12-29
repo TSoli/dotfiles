@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 # keybinds
 shutdown_bind="q"
@@ -43,8 +43,8 @@ confirm_logout="$(get_row_text "$logout" "$confirm_bind")"
 
 
 confirm_cmd() {
-  cancel_text="$(get_row_text "$cancel" "n")"
-  selected="$(confirm_prompt "$1" "$2" "$cancel_text")"
+  local cancel_text="$(get_row_text "$cancel" "n")"
+  local selected="$(confirm_prompt "$1" "$2" "$cancel_text")"
 
   case "$selected" in
     $confirm_shutdown) shutdown now ;;
@@ -57,7 +57,7 @@ confirm_cmd() {
 
 confirm_prompt() {
   echo -en "$1\0icon\x1f$2\n$3\0icon\x1f$cancel_symbol" |
-    rofi -dmenu -markup-rows \
+    rofi -dmenu -markup-rows -p "Are you sure?" \
     -kb-select-1 "$confirm_bind" \
     -kb-remove-char-back "" \
     -kb-select-2 "$cancel_bind" \
@@ -66,14 +66,14 @@ confirm_prompt() {
 
 
 open_powermenu() {
-  shutdown_row="$(get_row_text "$shutdown" "$shutdown_bind")"
-  reboot_row="$(get_row_text "$reboot" "$reboot_bind")"
-  suspend_row="$(get_row_text "$suspend" "$suspend_bind")"
-  lock_row="$(get_row_text "$lock" "$lock_bind")"
-  logout_row="$(get_row_text "$logout" "$logout_bind")"
-  hibernate_row="$(get_row_text "$hibernate" "$hibernate_bind")"
+  local shutdown_row="$(get_row_text "$shutdown" "$shutdown_bind")"
+  local reboot_row="$(get_row_text "$reboot" "$reboot_bind")"
+  local suspend_row="$(get_row_text "$suspend" "$suspend_bind")"
+  local lock_row="$(get_row_text "$lock" "$lock_bind")"
+  local logout_row="$(get_row_text "$logout" "$logout_bind")"
+  local hibernate_row="$(get_row_text "$hibernate" "$hibernate_bind")"
 
-  selected=$(echo -en "\
+  local selected=$(echo -en "\
 "$shutdown_row"\0icon\x1f"$shutdown_symbol"
 "$reboot_row"\0icon\x1f"$reboot_symbol"
 "$suspend_row"\0icon\x1f"$suspend_symbol"
@@ -81,7 +81,7 @@ open_powermenu() {
 "$logout_row"\0icon\x1f"$logout_symbol"
 "$hibernate_row"\0icon\x1f"$hibernate_symbol"" |
   rofi -dmenu \
-  -markup-rows -theme-str '@import "powermenu.rasi"' \
+  -markup-rows -p "Power Options" -theme-str '@import "powermenu.rasi"' \
   -kb-select-1 $shutdown_bind \
   -kb-select-2 "$reboot_bind" \
   -kb-select-3 "$suspend_bind" \

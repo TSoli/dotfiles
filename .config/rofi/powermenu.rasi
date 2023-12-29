@@ -1,14 +1,10 @@
-mainbox {
-  children: [listview];
-}
-
 entry {
   enabled: false;
 }
 
- prompt {
-   enabled: false;
- }
+prompt {
+  padding: 1%;
+}
  
  window {
    width: 20%;

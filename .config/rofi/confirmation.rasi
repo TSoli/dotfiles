@@ -1,5 +1,9 @@
-mainbox {
-  children: [listview];
+entry {
+  enabled: false;
+}
+
+prompt {
+  padding: 1%;
 }
 
 window {
