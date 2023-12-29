@@ -5,12 +5,16 @@ entry {
 prompt {
   padding: 1%;
 }
+
+window {
+  width: 20%;
+}
+
+inputbar {
+  children: [prompt];
+}
  
- window {
-   width: 20%;
- }
- 
- listview {
-   lines: 6;
-   scrollbar: false;
- }
+listview {
+  lines: 6;
+  scrollbar: false;
+}

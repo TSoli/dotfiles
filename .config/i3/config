@@ -86,6 +86,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id rofi -show drun
 # switching window with win+tab
 bindsym $mod+Tab exec --no-startup-id rofi -show window
+bindsym $mod+m exec --no-startup-id rofi -show custom-menus
 
 # change focus
 bindsym $mod+h focus left

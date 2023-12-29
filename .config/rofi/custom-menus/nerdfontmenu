@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+
+nerdfont_file="$(dirname "$(readlink -f "$0")")/nerdfont.txt"
+
+cat "$nerdfont_file" | rofi -dmenu -i -p "Symbols" \
+  -no-show-icons -matching fuzzy -sort -sorting-method "fzf" |
+  awk '{printf "%s", $1}' | xsel -i -b

@@ -6,6 +6,10 @@ prompt {
   padding: 1%;
 }
 
+inputbar {
+  children: [prompt];
+}
+
 window {
   width: 20%;
 }

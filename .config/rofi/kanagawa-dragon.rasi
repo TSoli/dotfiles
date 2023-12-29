@@ -5,6 +5,7 @@
 
   fg: #C8C093;
   fg-alt: #c5c9c5;
+  fg-alt-comment: #c5c9c580;
   fg-selected: #12120f;
   comment: #737c73cc;
   gray: #7a838255;
@@ -20,6 +21,7 @@
 window {
   width: 45%;
   background-color: @bg;
+  border-radius: 6;
 }
 
 element {
@@ -45,15 +47,55 @@ element-icon {
   background-color: transparent;
 }
 
-entry {
-  padding: 12;
+inputbar {
+  children: [prompt, textbox-prompt-colon, entry, num-filtered-rows, textbox-num-sep, num-rows];
   background-color: @bg-alt;
+}
+
+prompt {
+  enabled: true;
+  padding: 1% 0 0 1%;
+  background-color: inherit;
+  text-color: @fg;
+}
+
+textbox-prompt-colon {
+  padding: 1% 0;
+  expand: false;
+  str: ":";
+  text-color: @fg;
+  background-color: inherit;
+}
+
+entry {
+  padding: 1% 0.25%;
+  background-color: inherit;
   text-color: @fg-alt;
 }
 
-inputbar {
-  children: [prompt, entry];
-  background-color: @bg;
+num-filtered-rows {
+  text-color: @fg-alt-comment;
+  font: "Hack Nerd Font 10";
+  expand: false;
+  padding: 1.2% 0 1.2% 1.2%;
+  background-color: inherit;
+}
+
+textbox-num-sep {
+  text-color: @fg-alt-comment;
+  font: "Hack Nerd Font 10";
+  expand: false;
+  str: "/";
+  padding: 1.2% 0.3%;
+  background-color: inherit;
+}
+
+num-rows {
+  text-color: @fg-alt-comment;
+  font: "Hack Nerd Font 10";
+  expand: false;
+  padding: 1.2% 1.2% 1.2% 0;
+  background-color: inherit;
 }
 
 listview {
@@ -72,13 +114,6 @@ scrollbar {
 mainbox {
   children: [inputbar, listview];
   background-color: @bg;
-}
-
-prompt {
-  enabled: true;
-  padding: 12 0 0 12;
-  background-color: @bg-alt;
-  text-color: @fg;
 }
 
 message {
