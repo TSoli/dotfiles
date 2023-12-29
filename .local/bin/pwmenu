@@ -57,12 +57,15 @@ source "$DIR/lib-bwmenu"
 
 ask_password() {
   rm $CACHE_FILE
-  mpw=$(printf '' | rofi -dmenu -p "Master Password" -password -l 0 ${ROFI_OPTIONS[@]}) || exit $?
+  mpw=$(printf '' | rofi -dmenu \
+    -theme-str 'window { width: '30%'; }' \
+    -p " Master Password:" -password -l 0 \
+    ${ROFI_OPTIONS[@]}) || exit $?
   while ! out="$(bw --raw --nointeraction unlock "$mpw" 2>&1)"; do
     # exit_error 1 "Could not unlock vault: $out"
     rofi -e "Could not unlock vault: $out
 Please try again..." ${ROFI_OPTIONS[@]}
-    mpw=$(printf '' | rofi -dmenu -p "Master Password" -password -l 0 ${ROFI_OPTIONS[@]}) || exit $?
+    mpw=$(printf '' | rofi -dmenu -p " Master Password:" -password -l 0 ${ROFI_OPTIONS[@]}) || exit $?
   done
   # if ! out="$(bw --raw --nointeraction unlock "$mpw" 2>&1)"; then
   #   exit_error 1 "Could not unlock vault: $out"
@@ -144,9 +147,10 @@ rofi_menu() {
 <b>$KB_TYPEALL</b>: Type all  | <b>$KB_TYPEUSER</b>: Type user | <b>$KB_TYPEPASS</b>: Type pass | <b>$KB_TYPETOTP</b>: Type totp"
   }
 
-  rofi -dmenu -p 'Passwords:' \
+  rofi -dmenu -p ' Passwords:' \
     -i -no-custom \
     -no-show-icons \
+    -theme-str 'window { width: '30%'; }' \
     -mesg "$msg" \
     "${actions[@]}" \
     "${ROFI_OPTIONS[@]}"

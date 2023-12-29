@@ -3,6 +3,24 @@
 This repo stores some of my useful configuration files \(commonly referred to as
 dotfiles\) for a Linux machine.
 
+# Screenshots
+
+## Power Menu
+
+![Power Menu](.config/screenshots/power-menu.png)
+
+## Terminal and File Browser
+
+![Terminal and Files](.config/screenshots/terminal_files.png)
+
+## App Launcher
+
+![Rofi Menu](.config/screenshots/rofi.png)
+
+## Password Manager Menu
+
+![Password Manager Menu](.config/screenshots/pwmenu.png)
+
 # Migrating to a new system
 
 One of the most useful parts of having version control for these config files is
@@ -114,9 +132,3 @@ directory.\)
 
 For Neovim setup I mostly followed
 [this guide](https://www.youtube.com/playlist?list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ).
-
-# TODO
-
-- Look into neorg
-- Customise polybar/look into other bars
-- see what else is useful to rice i3?

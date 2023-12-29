@@ -29,12 +29,6 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | ba
 # npm/yarn
 nvm install --lts && npm install -g yarn
 
-printf "Installing more packages...\n"
-
-for pkg in ~/.setup_scripts/debian_based/packages/*.sh; do
-  bash "$pkg"
-done
-
 printf "Installing neovim...\n"
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage && \
   chmod u+x nvim.appimage && sudo mv -i nvim.appimage /usr/bin/nvim
@@ -52,3 +46,12 @@ for ext in ${font_url_exts[@]}; do
 done
 
 mv -i *.ttf .local/share/fonts/
+
+printf "Installing more packages...\n"
+
+for pkg in ~/.setup_scripts/debian_based/packages/*.sh; do
+  bash "$pkg"
+done
+
+# remove dependencies
+sudo apt autoremove --purge
