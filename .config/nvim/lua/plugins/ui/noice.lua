@@ -166,6 +166,7 @@ function M.config()
 				---@type NoiceViewOptions
 				opts = {
 					border = "rounded",
+					position = { row = 2, col = 0 },
 				}, -- merged with defaults from documentation
 			},
 			signature = {
@@ -180,6 +181,7 @@ function M.config()
 				---@type NoiceViewOptions
 				opts = {
 					border = "rounded",
+					position = { row = 2, col = 0 },
 				}, -- merged with defaults from documentation
 			},
 			message = {

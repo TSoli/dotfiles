@@ -84,9 +84,18 @@ bindsym $mod+Shift+q kill
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
 # bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec --no-startup-id rofi -show drun
+
 # switching window with win+tab
 bindsym $mod+Tab exec --no-startup-id rofi -show window
+
+# show custom menu list
 bindsym $mod+m exec --no-startup-id rofi -show custom-menus
+
+# password manager menu
+bindsym $mod+p exec --no-startup-id pwmenu
+
+# clipboard history menu
+bindsym $mod+c exec --no-startup-id clipmenu
 
 # change focus
 bindsym $mod+h focus left
@@ -184,9 +193,6 @@ bindsym $mod+Shift+r restart
 # bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 bindsym $mod+Shift+x exec --no-startup-id powermenu
 bindsym XF86PowerOff exec --no-startup-id powermenu
-
-# password manager menu
-bindsym $mod+p exec --no-startup-id pwmenu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {

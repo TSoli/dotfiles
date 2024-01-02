@@ -3,6 +3,7 @@ if require("zk.util").notebook_root(vim.fn.expand("%:p")) ~= nil then
 	local maps = {
 		-- Open the link under the caret.
 		-- { "n", "<CR>", "<Cmd>lua vim.lsp.buf.definition()<CR>" },
+		-- only goes back one so is a bit broken
 		{ "n", "<bs>", ":edit #<cr>", "Go to previous page" },
 
 		-- Create a new note after asking for its title.
@@ -29,7 +30,7 @@ if require("zk.util").notebook_root(vim.fn.expand("%:p")) ~= nil then
 		{ "n", "<localleader>nl", "<Cmd>ZkLinks<CR>" },
 
 		-- Preview a linked note.
-		{ "n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>" },
+		{ "n", "<localleader>np", "<Cmd>lua vim.lsp.buf.hover()<CR>" },
 		-- Open the code actions for a visual selection.
 		{ "v", "<localleader>na", ":'<,'>lua vim.lsp.buf.range_code_action()<CR>" },
 	}

@@ -27,7 +27,10 @@ CLIPBOARD_MODE=
 
 # Specify what happens when pressing Enter on an item.
 # Defaults to copy_password, can be changed to (auto_type all) or (auto_type password)
-ENTER_CMD=copy_password
+ENTER_CMD=(auto_type all)
+CUSTOM1_CMD=copy_password
+CUSTOM2_CMD=(auto_type username)
+CUSTOM3_CMD=(auto_type password)
 
 # Keyboard shortcuts
 : ${KB_SYNC="Alt+r"}
@@ -36,9 +39,9 @@ ENTER_CMD=copy_password
 : ${KB_FOLDERSELECT="Alt+c"}
 : ${KB_TOTPCOPY="Alt+t"}
 : ${KB_LOCK="Alt+L"}
-: ${KB_TYPEALL="Alt+1"}
-: ${KB_TYPEUSER="Alt+2"}
-: ${KB_TYPEPASS="Alt+3"}
+: ${KB_CUSTOM1="Alt+1"}
+: ${KB_CUSTOM2="Alt+2"}
+: ${KB_CUSTOM3="Alt+3"}
 : ${KB_TYPETOTP="Alt+4"}
 
 # Item type classification
@@ -140,13 +143,13 @@ rofi_menu() {
 
   [[ ! -z "$AUTOTYPE_MODE" ]] && {
     actions+=(
-      -kb-custom-5 $KB_TYPEALL
-      -kb-custom-6 $KB_TYPEUSER
-      -kb-custom-7 $KB_TYPEPASS
+      -kb-custom-5 $KB_CUSTOM1
+      -kb-custom-6 $KB_CUSTOM2
+      -kb-custom-7 $KB_CUSTOM3
       -kb-custom-10 $KB_TYPETOTP
     )
     msg+="
-<b>$KB_TYPEALL</b>: Type all  | <b>$KB_TYPEUSER</b>: Type user | <b>$KB_TYPEPASS</b>: Type pass | <b>$KB_TYPETOTP</b>: Type totp"
+<b>$KB_CUSTOM1</b>: Copy to clipboard  | <b>$KB_CUSTOM2</b>: Type user | <b>$KB_CUSTOM3</b>: Type pass | <b>$KB_TYPETOTP</b>: Type totp"
   }
 
   rofi -dmenu -p ' Passwords' \
@@ -249,9 +252,10 @@ on_rofi_exit() {
     13) show_folders;;
     17) copy_totp "$2";;
     18) lock_vault;;
-    14) auto_type all "$2";;
-    15) auto_type username "$2";;
-    16) auto_type password "$2";;
+    # 14) auto_type all "$2";;
+    14) "${CUSTOM1_CMD[@]}" "$2";;
+    15) "${CUSTOM2_CMD[@]}" "$2";;
+    16) "${CUSTOM3_CMD[@]}" "$2";;
     19) auto_type totp "$2";;
     *) exit "$1";;
   esac
@@ -322,7 +326,14 @@ select_copy_command() {
 }
 
 clipboard-set() {
-  clipboard-${CLIPBOARD_MODE}-set
+  if command -v clipctl &> /dev/null; then
+    # do not add credentials to clipboard history
+    clipctl disable
+    clipboard-${CLIPBOARD_MODE}-set
+    clipctl enable
+  else
+    clipboard-${CLIPBOARD_MODE}-set
+  fi
 }
 
 clipboard-get() {
@@ -497,9 +508,10 @@ Quick Actions:
   $KB_FOLDERSELECT  Search through folders
 
   $KB_TOTPCOPY  Copy the TOTP
-  $KB_TYPEALL  Autotype the username and password [needs xdotool or ydotool]
-  $KB_TYPEUSER  Autotype the username [needs xdotool or ydotool]
-  $KB_TYPEPASS  Autotype the password [needs xdotool or ydotool]
+  # $KB_TYPEALL  Autotype the username and password [needs xdotool or ydotool]
+  $KB_CUSTOM1   Copy password to clipboard
+  $KB_CUSTOM2  Autotype the username [needs xdotool or ydotool]
+  $KB_CUSTOM3  Autotype the password [needs xdotool or ydotool]
   $KB_TYPETOTP  Autotype the TOTP [needs xdotool or ydotool]
 
   $KB_LOCK  Lock your vault

@@ -162,6 +162,9 @@ local maps = {
 	},
 	-- Search for the notes matching the current visual selection.
 	{ "v", "<leader>nf", ":'<,'>ZkMatch<CR>", "zk: Note Find" },
+
+	-- Open the notes index file
+	{ "n", "<leader>ni", "<Cmd>ZkOpenIndex<CR>", "zk: open Notes Index" },
 }
 
 local term_maps = {
