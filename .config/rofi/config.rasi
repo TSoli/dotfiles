@@ -1,9 +1,10 @@
 configuration {
   modi: "drun,window,run,custom-menus:custom_menu_launcher";
   font: "Hack Nerd Font 12";
-  display-window: "Windows";
-  display-drun: "Apps";
-  display-custom-menus: "Custom Menus";
+  display-drun: "󰀻 Apps";
+  display-window: "󱂬 Windows";
+  display-run: "󰜎 Run";
+  display-custom-menus: "󰍜 Custom Menus";
   drun-display-format: "{icon} {name} [<span weight='light' size='small' fgalpha='50%'><i>({generic})</i></span>] [<span weight='light' size='small' fgalpha='50%'>{comment}</span>]";
   show-icons: true;
   kb-cancel: "Escape,Control+g,Control+bracketleft,Super+Q";

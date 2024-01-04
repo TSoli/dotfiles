@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# From https://github.com/cdown/clipmenu
+
 : "${CM_LAUNCHER=rofi}"
 : "${CM_HISTLENGTH=8}"
 
@@ -39,7 +41,7 @@ fi
 
 # rofi supports dmenu-like arguments through the -dmenu flag. -p wastes space
 # in real dmenu, but rofi shows "dmenu:" anyway, so pass it here only.
-[[ "$CM_LAUNCHER" == rofi ]] && set -- -dmenu -p "Clipboard" "$@"
+[[ "$CM_LAUNCHER" == rofi ]] && set -- -dmenu -p "󰅍 Clipboard" -no-show-icons -theme-str 'window { width: '30%'; }' "$@"
 
 list_clips() {
     LC_ALL=C sort -rnk 1 < "$cache_file" | cut -d' ' -f2- | awk '!seen[$0]++'

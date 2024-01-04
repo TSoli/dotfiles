@@ -88,6 +88,9 @@ bindsym $mod+d exec --no-startup-id rofi -show drun
 # switching window with win+tab
 bindsym $mod+Tab exec --no-startup-id rofi -show window
 
+# Run menu
+bindsym $mod+grave exec --no-startup-id rofi -show run
+
 # show custom menu list
 bindsym $mod+m exec --no-startup-id rofi -show custom-menus
 
@@ -95,7 +98,11 @@ bindsym $mod+m exec --no-startup-id rofi -show custom-menus
 bindsym $mod+p exec --no-startup-id pwmenu
 
 # clipboard history menu
+exec --no-startup-id clipmenud
 bindsym $mod+c exec --no-startup-id clipmenu
+
+# calculator
+bindsym $mod+equal exec --no-startup-id calculator
 
 # change focus
 bindsym $mod+h focus left

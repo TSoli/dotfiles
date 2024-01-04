@@ -8,7 +8,7 @@ sudo apt-get install -y i3 feh picom polybar rofi flameshot
 pip install autotiling
 
 # install a clipboard history menu
-sudo apt-get install -y libxfixes-dev
+sudo apt-get install -y libxfixes-dev rofi-dev qalc libtool
 
 git clone git@github.com:cdown/clipnotify.git && cd clipnotify &&
   sudo make install && cd .. && rm -rf clipnotify
@@ -16,3 +16,10 @@ git clone git@github.com:cdown/clipnotify.git && cd clipnotify &&
 git clone git@github.com:cdown/clipmenu.git &&
   sudo cp clipmenu/init/clipmenud.service /usr/lib/systemd/user/ &&
   rm -rf clipmenu
+
+git clone git@github.com:svenstaro/rofi-calc.git && cd rofi-calc && mkdir m4 &&
+  autoreconf -i && mkdir build && cd build && ../configure && sudo make install &&
+  cd ../.. && sudo rm -rf rofi-calc
+
+# emoji menu
+python3 -m pip install rofimoji

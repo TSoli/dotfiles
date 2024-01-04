@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# Uses https://github.com/svenstaro/rofi-calc
+
+rofi -show calc -modi calc -no-show-match -no-sort -no-show-icons \
+  -display-calc "󰃬 Calc" -theme-str 'window {width: '30%'; }'

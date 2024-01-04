@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+rofi -modi "Emoji 😃:rofimoji" -show "Emoji 😃" -no-show-icons \
+  -theme-str 'window { width: '30%'; }'

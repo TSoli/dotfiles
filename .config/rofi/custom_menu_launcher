@@ -4,7 +4,9 @@ menu_dir="$(dirname "$(readlink -f "$0")")/custom-menus"
 
 if [ "$@" ]; then
   # get dir name and run the script in menus
-  exec 1>&-
+  # exec 1>&-
+  # exec 1>&2 "$menu_dir/$1"
+  pkill -f "rofi"
   "$menu_dir/$1"
 else
   ls $menu_dir | grep -v '\.' | awk '{print $0 "\0icon\x1fmenu-editor"}'
