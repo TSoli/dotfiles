@@ -27,6 +27,7 @@ function M.config()
 	-- https://github.com/prettier-solidity/prettier-plugin-solidity
 	null_ls.setup({
 		debug = false,
+		border = "rounded",
 		on_attach = function(client, bufnr)
 			if client.supports_method("textDocument/formatting") then
 				vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
@@ -80,6 +81,8 @@ function M.config()
 			formatting.clang_format.with({
 				args = { "-style=Google" },
 			}),
+			formatting.shfmt,
+			code_actions.shellcheck,
 
 			-- diagnostics
 			diagnostics.flake8,

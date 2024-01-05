@@ -1,0 +1,6 @@
+*
+
+!.gitignore
+!decrypt
+!README*
+!*.gpg

@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+backups_dir=$(dirname "$0")
+
+shopt -s nullglob
+backups=("$backups_dir/"*.gpg)
+
+if [ ${#backups[@]} -eq 0 ]; then
+	echo "No backups found" >&2
+	exit 1
+fi
+
+read -rsp "$(tput bold)$(tput setaf 4)To decrypt the password files please enter the master password: $(tput sgr0)" mpw
+echo
+
+while ! gpg -o "${backups[0]%.gpg}" --passphrase "$mpw" --batch --decrypt --yes "${backups[0]}"; do
+	read -rsp "$(tput bold)$(tput setaf 1)Incorrect password. Please try again: $(tput sgr0)" mpw
+	echo
+done
+
+echo "$(tput bold)$(tput setaf 2)Successfully decrypted ${backups[0]%.gpg}$(tput sgr0)"
+
+for ((i = 1; i < ${#backups[@]}; ++i)); do
+	if gpg -o "${backups[i]%.gpg}" --passphrase "$mpw" --batch --decrypt --yes "${backups[i]}"; then
+		echo "$(tput bold)$(tput setaf 2)Successfully decrypted ${backups[0]%.gpg}$(tput sgr0)"
+	else
+		echo "$(tput bold)$(tput setaf 1)Could not decrypt ${backups[0]}$(tput sgr0)"
+	fi
+done
