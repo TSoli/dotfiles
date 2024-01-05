@@ -129,7 +129,8 @@ local maps = {
 	},
 
 	-- Undotree
-	{ "n", "<leader>u", "<cmd>UndotreeToggle<CR>", "Undotree: Toggle" },
+	-- { "n", "<leader>u", "<cmd>UndotreeToggle<CR>", "Undotree: Toggle" },
+	{ "n", "<leader>u", "<cmd>Telescope undo<CR>", "Telescope: undo" },
 
 	-- DAP
 	{ "n", "<leader>bb", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "DAP: Toggle breakpoint" },

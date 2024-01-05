@@ -13,7 +13,7 @@
   navigate = true # use n and N to naviage between diff sections
   light = false   # set to true for terminals with light background
   line-numbers = true
-  side-by-side = true
+  side-by-side = false
   hyperlinks = true
   true-color = always
 

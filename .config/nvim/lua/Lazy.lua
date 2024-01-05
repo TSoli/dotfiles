@@ -31,7 +31,10 @@ end
 return lazy.setup("plugins", {
 	install = { colorscheme = { require("plugins.colorschemes").name } },
 	defaults = { lazy = true },
-	ui = { wrap = "true" },
+	ui = {
+		wrap = "true",
+		border = "rounded",
+	},
 	change_detection = { enabled = true },
 	debug = false,
 	performance = {

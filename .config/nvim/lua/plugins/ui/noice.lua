@@ -238,7 +238,13 @@ function M.config()
 		},
 		throttle = 1000 / 30, -- how frequently does Noice need to check for ui updates? This has no effect when in blocking mode.
 		---@type NoiceConfigViews
-		views = {}, ---@see section on views
+		views = {
+			mini = {
+				win_options = {
+					winblend = 0,
+				},
+			},
+		}, ---@see section on views
 		---@type NoiceRouteConfig[]
 		routes = {}, --- @see section on routes
 		---@type table<string, NoiceFilter>
