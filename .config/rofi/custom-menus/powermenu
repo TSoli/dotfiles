@@ -29,11 +29,11 @@ hibernate_symbol="system-hibernate"
 cancel_symbol="gtk-cancel"
 
 comment_text() {
-  echo "<span weight='light' size='small' fgalpha='50%'><i>("$1")</i></span>"
+	echo "<span weight='light' size='small' fgalpha='50%'><i>("$1")</i></span>"
 }
 
 get_row_text() {
-  echo ""$1" "$(comment_text "$2")""
+	echo ""$1" "$(comment_text "$2")""
 }
 
 # confirm rows
@@ -41,64 +41,63 @@ confirm_shutdown="$(get_row_text "$shutdown" "$confirm_bind")"
 confirm_reboot="$(get_row_text "$reboot" "$confirm_bind")"
 confirm_logout="$(get_row_text "$logout" "$confirm_bind")"
 
-
 confirm_cmd() {
-  local cancel_text="$(get_row_text "$cancel" "n")"
-  local selected="$(confirm_prompt "$1" "$2" "$cancel_text")"
+	local cancel_text="$(get_row_text "$cancel" "n")"
+	local selected="$(confirm_prompt "$1" "$2" "$cancel_text")"
 
-  case "$selected" in
-    $confirm_shutdown) shutdown now ;;
-    $confirm_reboot) reboot ;;
-    $confirm_logout) i3-msg exit ;;
-    $cancel_text) open_powermenu ;;
-    *) exit 1 ;;
-  esac
+	case "$selected" in
+	$confirm_shutdown) shutdown now ;;
+	$confirm_reboot) reboot ;;
+	$confirm_logout) i3-msg exit ;;
+	$cancel_text) open_powermenu ;;
+	*) exit 1 ;;
+	esac
 }
 
 confirm_prompt() {
-  echo -en "$1\0icon\x1f$2\n$3\0icon\x1f$cancel_symbol" |
-    rofi -dmenu -markup-rows -p "Are you sure?" \
-    -kb-select-1 "$confirm_bind" \
-    -kb-remove-char-back "" \
-    -kb-select-2 "$cancel_bind" \
-    -theme-str '@import "confirmation.rasi"'
+	echo -en "$1\0icon\x1f$2\n$3\0icon\x1f$cancel_symbol" |
+		rofi -dmenu -markup-rows -p "Are you sure?" \
+			-kb-select-1 "$confirm_bind" \
+			-kb-remove-char-back "" \
+			-kb-select-2 "$cancel_bind" \
+			-theme-str '@import "confirmation.rasi"'
 }
 
-
 open_powermenu() {
-  local shutdown_row="$(get_row_text "$shutdown" "$shutdown_bind")"
-  local reboot_row="$(get_row_text "$reboot" "$reboot_bind")"
-  local suspend_row="$(get_row_text "$suspend" "$suspend_bind")"
-  local lock_row="$(get_row_text "$lock" "$lock_bind")"
-  local logout_row="$(get_row_text "$logout" "$logout_bind")"
-  local hibernate_row="$(get_row_text "$hibernate" "$hibernate_bind")"
+	local shutdown_row="$(get_row_text "$shutdown" "$shutdown_bind")"
+	local reboot_row="$(get_row_text "$reboot" "$reboot_bind")"
+	local suspend_row="$(get_row_text "$suspend" "$suspend_bind")"
+	local lock_row="$(get_row_text "$lock" "$lock_bind")"
+	local logout_row="$(get_row_text "$logout" "$logout_bind")"
+	local hibernate_row="$(get_row_text "$hibernate" "$hibernate_bind")"
 
-  local selected=$(echo -en "\
+	local selected=$(
+		echo -en "\
 "$shutdown_row"\0icon\x1f"$shutdown_symbol"
 "$reboot_row"\0icon\x1f"$reboot_symbol"
 "$suspend_row"\0icon\x1f"$suspend_symbol"
 "$lock_row"\0icon\x1f"$lock_symbol"
 "$logout_row"\0icon\x1f"$logout_symbol"
 "$hibernate_row"\0icon\x1f"$hibernate_symbol"" |
-  rofi -dmenu \
-  -markup-rows -p "Power Options" -theme-str '@import "powermenu.rasi"' \
-  -kb-select-1 $shutdown_bind \
-  -kb-select-2 "$reboot_bind" \
-  -kb-select-3 "$suspend_bind" \
-  -kb-select-4 "$lock_bind" \
-  -kb-select-5 "$logout_bind" \
-  -kb-select-6 "$hibernate_bind"
-)
+			rofi -dmenu \
+				-markup-rows -p "Power Options" -theme-str '@import "powermenu.rasi"' \
+				-kb-select-1 $shutdown_bind \
+				-kb-select-2 "$reboot_bind" \
+				-kb-select-3 "$suspend_bind" \
+				-kb-select-4 "$lock_bind" \
+				-kb-select-5 "$logout_bind" \
+				-kb-select-6 "$hibernate_bind"
+	)
 
-  case "$selected" in
-    $shutdown_row) confirm_cmd "$confirm_shutdown" "$shutdown_symbol" ;;
-    $reboot_row) confirm_cmd "$confirm_reboot" "$reboot_symbol" ;;
-    $logout_row) confirm_cmd "$confirm_logout" "$logout_symbol" ;;
-    $suspend_row) systemctl suspend ;;
-    $lock_row) lock ;;
-    $hibernate_row) systemctl hibernate ;;
-    *) exit 1 ;;
-  esac
+	case "$selected" in
+	$shutdown_row) confirm_cmd "$confirm_shutdown" "$shutdown_symbol" ;;
+	$reboot_row) confirm_cmd "$confirm_reboot" "$reboot_symbol" ;;
+	$logout_row) confirm_cmd "$confirm_logout" "$logout_symbol" ;;
+	$suspend_row) systemctl suspend ;;
+	$lock_row) lock ;;
+	$hibernate_row) systemctl hibernate ;;
+	*) exit 1 ;;
+	esac
 }
 
 open_powermenu

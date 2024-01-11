@@ -97,6 +97,9 @@ bindsym $mod+m exec --no-startup-id rofi -show custom-menus
 # password manager menu
 bindsym $mod+p exec --no-startup-id pwmenu
 
+# battery saver settings
+bindsym $mod+Shift+b exec --no-startup-id batterymenu
+
 # clipboard history menu
 exec --no-startup-id clipmenud
 bindsym $mod+c exec --no-startup-id clipmenu
@@ -261,3 +264,6 @@ exec_always ~/.config/polybar/launch.sh
 
 # Low battery warnings
 exec --no-startup-id i3-battery-popup -n
+
+# Empty trash from older than 30 days
+exec --no-startup-id trash-empty 30

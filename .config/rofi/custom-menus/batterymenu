@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+# A menu to set battery charge levels with tlp
+
+MODES=("Power Saving" "Balanced" "Max Battery")
+
+# Battery will start charging if below the start value and stop at or above the
+# stop value
+STARTS=(55 75 90)
+STOPS=(60 80 96)
+ICONS=("battery-level-60-charging-symbolic" "battery-level-80-charging-symbolic" "battery-level-100-charged-symbolic")
+
+get_mode() {
+	local menu_options=""
+	for ((i = 0; i < ${#MODES[@]}; ++i)); do
+		menu_options+="${MODES[i]}\0icon\x1f${ICONS[i]}\n"
+	done
+
+	echo -en $menu_options | rofi -dmenu -p "Battery Mode " -theme-str '@import "powermenu.rasi" listview { lines: 3; }'
+}
+
+set_mode() {
+	local idx=0
+	case "$1" in
+	"${MODES[0]}")
+		idx=0
+		;;
+	"${MODES[1]}")
+		idx=1
+		;;
+	"${MODES[2]}")
+		idx=2
+		;;
+	*)
+		exit 1
+		;;
+	esac
+
+	pkexec tlp setcharge "${STARTS[idx]}" "${STOPS[idx]}"
+}
+
+set_mode "$(get_mode)"

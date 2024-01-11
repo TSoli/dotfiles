@@ -58,3 +58,10 @@ if require("zk.util").notebook_root(vim.fn.expand("%:p")) ~= nil then
 		callback = close_all_notes,
 	})
 end
+
+-- bind Markdown preview
+vim.api.nvim_buf_set_keymap(0, "n", "<localleader>mp", "<Cmd>MarkdownPreview<CR>", {
+	noremap = true,
+	silent = false,
+	desc = "open Markdown Preview",
+})

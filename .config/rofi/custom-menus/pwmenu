@@ -66,9 +66,9 @@ backup_passwords() {
 
 	mkdir -p "$PW_BACKUP_DIR"
 	bw --raw export --format json --session "$bw_session" |
-		gpg -c --cipher-algo AES256 --batch --passphrase "$mpw" -o "$PW_BACKUP_DIR/passwords.json.gpg"
+		gpg -c --cipher-algo AES256 --batch --passphrase "$mpw" --yes -o "$PW_BACKUP_DIR/passwords.json.gpg"
 	bw --raw export --format csv --session "$bw_session" |
-		gpg -c --cipher-algo AES256 --batch --passphrase "$mpw" -o "$PW_BACKUP_DIR/passwords.csv.gpg"
+		gpg -c --cipher-algo AES256 --batch --passphrase "$mpw" --yes -o "$PW_BACKUP_DIR/passwords.csv.gpg"
 }
 
 ask_password() {
