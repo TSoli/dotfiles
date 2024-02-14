@@ -97,6 +97,9 @@ need to change this setting in the terminal application itself.
 It is also likely that the first time opening tmux the plugins will need to be
 manually installed by pressing the prefix \(C-Space\) and then 'I' \(S-i\).
 
+The system tray seems to be broken in polybar so you may need to build from
+source to get a newer version.
+
 # Updating the config files
 
 Simply use the `config` alias from anywhere in the system as if it were `git`.
@@ -132,3 +135,10 @@ directory.\)
 
 For Neovim setup I mostly followed
 [this guide](https://www.youtube.com/playlist?list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ).
+
+## TODO
+
+- Consider auto install for alacitty
+- Install eza by default in setup script
+- Install GTK theme in setup script?
+- Intall i3 from source to get gaps?

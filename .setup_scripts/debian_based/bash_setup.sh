@@ -27,6 +27,9 @@ zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) 
 printf "Installing package managers...\n"
 # nvm
 curl -o- https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+
+# might be needed for nvm to work?
+source ~/.bashrc
 # npm/yarn
 nvm install --lts && npm install -g yarn
 
@@ -46,7 +49,7 @@ for ext in ${font_url_exts[@]}; do
 	curl -H "Accept: application/vnd.github.v3.raw" -LO "${base_font_url}${ext}"
 done
 
-mv -i *.ttf .local/share/fonts/
+mkdir -p ~/.local/share/fonts && mv -i *.ttf ~/.local/share/fonts/
 
 printf "Installing more packages...\n"
 
