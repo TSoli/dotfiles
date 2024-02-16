@@ -1,0 +1,10 @@
+# Paths to user settings for latexindent.pl
+#
+# Must be absolute? See https://latexindentpl.readthedocs.io/en/latest/sec-indent-config-and-settings.html#indentconfig-yaml-and-indentconfig-yaml
+#
+# Note that the settings will be read in the order you
+# specify here- each successive settings file will overwrite
+# the variables that you specify
+#
+paths:
+  - $HOME/.config/tex/defaultSettings.yaml
