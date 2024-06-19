@@ -35,6 +35,12 @@ function M.config()
 	local configs = require("nvim-treesitter.configs")
 	-- vim.opt.foldmethod = "expr"
 	-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+	-- add support for rasi files
+	vim.filetype.add({
+    extension = {
+      rasi = "rasi",
+    },
+	})
 
 	configs.setup({
 		-- put the language you want in this array

@@ -85,7 +85,7 @@ function M.config()
 			code_actions.shellcheck,
 
 			-- diagnostics
-			diagnostics.flake8,
+			diagnostics.flake8.with({ args = { "--append-config", "~/.config/flake8/tox.ini" }}),
 			-- diagnostics.eslint_d.with {
 			--   condition = function(utils)
 			--     return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json" })
