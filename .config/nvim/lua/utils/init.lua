@@ -11,6 +11,7 @@ M.servers = {
 	"jsonls",
 	"yamlls",
 	"clangd",
+	"matlab_ls",
 }
 
 return M

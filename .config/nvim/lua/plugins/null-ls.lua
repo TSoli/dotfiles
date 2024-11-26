@@ -73,12 +73,13 @@ function M.config()
 			formatting.black.with({ extra_args = {} }),
 			formatting.isort,
 			formatting.stylua,
-			formatting.google_java_format,
+			-- formatting.google_java_format,
 			formatting.latexindent.with({
 				filetypes = { "tex", "sty", "cls" },
 				args = { "-m" }, -- allows latexindent to modify linebreaks
 			}),
 			formatting.clang_format.with({
+				disabled_filetypes = { "java" },
 				args = { "-style=Google" },
 			}),
 			formatting.shfmt,

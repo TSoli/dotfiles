@@ -4,6 +4,7 @@ local M = {
 	lazy = true,
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
+		"mfussenegger/nvim-jdtls", -- for java
 	},
 }
 
