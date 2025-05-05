@@ -9,7 +9,7 @@ cd $HOME
 printf "Installing packages...\n"
 sudo apt-get update && sudo apt-get install -y zsh zip curl wget ripgrep tar \
 	gzip build-essential less xclip xsel cmake tmux exa zathura xdotool python3-pip \
-	trash-cli backintime-qt
+	trash-cli backintime-qt delta bat
 
 # tmux package manager
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -34,7 +34,7 @@ source ~/.bashrc
 nvm install --lts && npm install -g yarn
 
 printf "Installing neovim...\n"
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage &&
+curl -LO https://github.com/neovim/neovim/releases/download/v0.9.4/nvim.appimage &&
 	chmod u+x nvim.appimage && sudo mv -i nvim.appimage /usr/bin/nvim
 
 # TODO: Check if the appimage will run and extract if necessary
