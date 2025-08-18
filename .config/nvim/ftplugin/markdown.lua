@@ -27,7 +27,9 @@ if require("zk.util").notebook_root(vim.fn.expand("%:p")) ~= nil then
 		-- Alternative for backlinks using pure LSP and showing the source context.
 		--{'n', '<leader>zb', '<Cmd>lua vim.lsp.buf.references()<CR>'},
 		-- Open notes linked by the current buffer.
-		{ "n", "<localleader>nl", "<Cmd>ZkLinks<CR>" },
+		{ "n", "<localleader>nll", "<Cmd>ZkLinks<CR>", "zk: Notes List Links" },
+		{ "n", "<localleader>nli", "<Cmd>ZkInsertLink<CR>", "zk: Note Link Insert" },
+		{ "v", "<localleader>nli", ":'<,'>ZkInsertLinkAtSelection<CR>", "zk: Note Link Insert (on selected)" },
 
 		-- Preview a linked note.
 		{ "n", "<localleader>np", "<Cmd>lua vim.lsp.buf.hover()<CR>" },

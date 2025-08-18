@@ -18,6 +18,8 @@ ITEMS=
 CACHE_FILE=/tmp/bwmenu/logins.gpg
 
 PW_BACKUP_DIR=~/backup/bitwarden/
+# file that stores the default username
+DEFAULT_USER=$(cat ~/.config/rofi/custom-menus/bw_username.txt)
 
 # Stores which command will be used to emulate keyboard type
 AUTOTYPE_MODE=
@@ -75,19 +77,56 @@ backup_passwords() {
 		gpg -c --cipher-algo AES256 --batch --passphrase "$mpw" --yes -o "$PW_BACKUP_DIR/passwords.csv.gpg"
 }
 
+ask_user() {
+	local theme_str='window { width: '30%'; } num-filtered-rows, textbox-num-sep, num-rows { enabled: false; }'
+	local user
+	user=$(printf '' | rofi -dmenu \
+		-theme-str "$theme_str" \
+		-p "󰍂 User" -l 0 -filter "$DEFAULT_USER" \
+		${ROFI_OPTIONS[@]}) || return $?
+	echo "$user"
+}
+
 ask_password() {
 	local theme_str='window { width: '30%'; } num-filtered-rows, textbox-num-sep, num-rows { enabled: false; }'
-	rm $CACHE_FILE
-	local mpw=$(printf '' | rofi -dmenu \
+	local mpw
+	mpw=$(printf '' | rofi -dmenu \
 		-theme-str "$theme_str" \
 		-p " Master Password" -password -l 0 \
-		${ROFI_OPTIONS[@]}) || exit $?
-	while ! out="$(bw --raw --nointeraction unlock "$mpw" 2>&1)"; do
-		# exit_error 1 "Could not unlock vault: $out"
+		${ROFI_OPTIONS[@]}) || return $?
+	echo "$mpw"
+}
+
+unlock() {
+	local theme_str='window { width: '30%'; } num-filtered-rows, textbox-num-sep, num-rows { enabled: false; }'
+	rm $CACHE_FILE
+	local status=$(bw status | jq -r ".status")
+
+	while [ "$status" != "unlocked" ]; do
+		case "$status" in
+		unauthenticated)
+			local user
+			local mpw
+			user="$(ask_user)" || return $?
+			mpw="$(ask_password)" || return $?
+
+			out="$(bw --raw --nointeraction login "$user" "$mpw" 2>&1)" && break
+			DEFAULT_USER="$user"
+			;;
+		locked)
+			local mpw
+			mpw="$(ask_password)" || return $?
+
+			out="$(bw --raw --nointeraction unlock "$mpw" 2>&1)" && break
+			;;
+		*)
+			exit_error 1 "Unknown status: $status"
+			;;
+		esac
+
 		rofi -e "Could not unlock vault: $out
 Please try again..." ${ROFI_OPTIONS[@]}
-		mpw=$(printf '' | rofi -dmenu -theme-str "$theme_str" \
-			-p " Master Password" -password -l 0 ${ROFI_OPTIONS[@]}) || exit $?
+		local status=$(bw status | jq -r ".status")
 	done
 
 	keyctl link @u @s
@@ -98,10 +137,10 @@ Please try again..." ${ROFI_OPTIONS[@]}
 get_session_key() {
 	if [ $AUTO_LOCK -eq 0 ]; then
 		keyctl purge user bw_session &>/dev/null
-		BW_HASH=$(ask_password)
+		BW_HASH=$(unlock) || return $?
 	else
 		if ! key_id=$(keyctl request user bw_session 2>/dev/null); then
-			session=$(ask_password) || exit $?
+			session=$(unlock) || return $?
 			key_id=$(echo "$session" | keyctl padd user bw_session @u)
 		fi
 
@@ -596,8 +635,9 @@ parse_cli_arguments() {
 
 parse_cli_arguments "$@"
 
-get_session_key
+get_session_key || exit $?
 select_autotype_command
 select_copy_command
 load_cache
 show_items
+ask_user

@@ -8,6 +8,53 @@ function M.config()
 	local zk = require("zk")
 	local commands = require("zk.commands")
 	local util = require("zk.util")
+	local actions = require("telescope.actions")
+	local action_state = require("telescope.actions.state")
+	local pickers = require("zk.commands").pickers
+
+	-- Add command to insert markdown-style link to a Zk note
+	commands.add("ZkInsertLink", function(options)
+		options = options or {}
+		pickers
+			.get_picker("ZkNotes", {
+				options = options,
+				picker_options = {
+					attach_mappings = function(_, map)
+						map("i", "<CR>", function(prompt_bufnr)
+							local selection = action_state.get_selected_entry()
+							actions.close(prompt_bufnr)
+
+							if not selection or not selection.value then
+								return
+							end
+
+							local note = selection.value
+							local filename = vim.fn.fnamemodify(note.path, ":t") -- get basename
+							local name = filename:gsub("%.md$", ""):gsub("^%d+%-", "") -- strip .md and leading ID
+
+							local placeholder = "text"
+							local link = string.format("[%s](%s)", placeholder, name)
+
+							-- Insert the link at cursor
+							local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+							vim.api.nvim_buf_set_text(0, row - 1, col, row - 1, col, { link })
+
+							-- Move cursor inside the brackets and select placeholder
+							local start_col = col + 1 -- after '['
+							local end_col = start_col + #placeholder
+
+							vim.api.nvim_win_set_cursor(0, { row, start_col })
+
+							vim.cmd("normal! v")
+							vim.api.nvim_win_set_cursor(0, { row, end_col })
+						end)
+
+						return true
+					end,
+				},
+			})
+			:find()
+	end)
 
 	commands.add("ZkOrphans", function(options)
 		options = vim.tbl_extend("force", { orphan = true }, options or {})

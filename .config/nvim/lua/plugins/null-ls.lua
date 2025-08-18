@@ -10,8 +10,6 @@ local M = {
 	},
 }
 
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
 -- local file_exists = function(file)
 --   local f = io.open(file, "r")
 --   if f ~= nil then io.close(f) return true else return false end
@@ -23,6 +21,26 @@ function M.config()
 	local formatting = null_ls.builtins.formatting
 	local diagnostics = null_ls.builtins.diagnostics
 	local code_actions = null_ls.builtins.code_actions
+
+	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+	local format_on_save = true
+
+	-- Command to toggle format-on-save
+	vim.api.nvim_create_user_command("ToggleFormatOnSave", function()
+		format_on_save = not format_on_save
+		if format_on_save then
+			print("Format on save enabled")
+		else
+			print("Format on save disabled")
+		end
+	end, {})
+
+	vim.api.nvim_set_keymap(
+		"n",
+		"<leader>ltf",
+		":ToggleFormatOnSave<CR>",
+		{ noremap = true, silent = true, desc = "LSP: Toggle Format on write" }
+	)
 
 	-- https://github.com/prettier-solidity/prettier-plugin-solidity
 	null_ls.setup({
@@ -37,7 +55,9 @@ function M.config()
 					callback = function()
 						-- on 0.8, you should use vim.lsp.buf.format({ bufnr = bufnr }) instead
 						-- on later neovim version, you should use vim.lsp.buf.format({ async = false }) instead
-						vim.lsp.buf.format({ async = false, timeout_ms = 8000 })
+						if format_on_save then
+							vim.lsp.buf.format({ async = false, timeout_ms = 8000 })
+						end
 					end,
 				})
 			end
@@ -86,7 +106,7 @@ function M.config()
 			code_actions.shellcheck,
 
 			-- diagnostics
-			diagnostics.flake8.with({ args = { "--append-config", "~/.config/flake8/tox.ini" }}),
+			diagnostics.flake8.with({ args = { "--append-config", "~/.config/flake8/tox.ini" } }),
 			-- diagnostics.eslint_d.with {
 			--   condition = function(utils)
 			--     return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json" })

@@ -158,7 +158,7 @@ local maps = {
 	{
 		"n",
 		"<leader>nf",
-		"<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search 󰙏 ') } }<CR>",
+		"<Cmd>ZkNotes { sort = { 'modified' } }<CR>",
 		"zk: Note Find",
 	},
 	-- Search for the notes matching the current visual selection.
