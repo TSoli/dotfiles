@@ -80,6 +80,29 @@ function M.config()
 		end
 	end)
 
+	commands.add("ZkGrep", function(opts)
+		-- broken - needs update?
+		-- local root = util.resolve_notebook_path(0)
+		local root = vim.env.ZK_NOTEBOOK_DIR
+		local collection = {}
+		local list_opts = { select = { "title", "path", "absPath" } }
+		require("zk.api").list(root, list_opts, function(_, notes)
+			for _, note in ipairs(notes) do
+				collection[note.absPath] = note.title or note.path
+			end
+		end)
+
+		local options = vim.tbl_deep_extend("force", {
+			prompt_title = "Notes",
+			search_dirs = { root },
+			disable_coordinates = true,
+			path_display = function(_, path)
+				return collection[path]
+			end,
+			type_filter = "markdown",
+		}, opts or {})
+		require("telescope.builtin").live_grep(options)
+	end)
 	zk.setup({
 		-- can be "telescope", "fzf", "fzf_lua" or "select" (`vim.ui.select`)
 		-- it's recommended to use "telescope", "fzf" or "fzf_lua"

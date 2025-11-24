@@ -161,6 +161,7 @@ local maps = {
 		"<Cmd>ZkNotes { sort = { 'modified' } }<CR>",
 		"zk: Note Find",
 	},
+	{ "n", "<leader>ng", "<Cmd>ZkGrep<CR>", "zk: Search Notes with ripGrep" },
 	-- Search for the notes matching the current visual selection.
 	{ "v", "<leader>nf", ":'<,'>ZkMatch<CR>", "zk: Note Find" },
 
