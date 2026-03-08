@@ -7,6 +7,10 @@ local M = {
 			"nvim-lua/plenary.nvim",
 			lazy = true,
 		},
+		{
+			"nvimtools/none-ls-extras.nvim",
+			lazy = true,
+		},
 	},
 }
 
@@ -94,7 +98,8 @@ function M.config()
 			formatting.isort,
 			formatting.stylua,
 			-- formatting.google_java_format,
-			formatting.latexindent.with({
+			-- note this was removed in newer versions
+			require("none-ls.formatting.latexindent").with({
 				filetypes = { "tex", "sty", "cls" },
 				args = { "-m" }, -- allows latexindent to modify linebreaks
 			}),
@@ -103,10 +108,11 @@ function M.config()
 				args = { "-style=Google" },
 			}),
 			formatting.shfmt,
-			code_actions.shellcheck,
+			-- removed in newer versions - find an alternative
+			-- code_actions.shellcheck,
 
 			-- diagnostics
-			diagnostics.flake8.with({ args = { "--append-config", "~/.config/flake8/tox.ini" } }),
+			require("none-ls.diagnostics.flake8").with({ args = { "--append-config", "~/.config/flake8/tox.ini" } }),
 			-- diagnostics.eslint_d.with {
 			--   condition = function(utils)
 			--     return utils.root_has_file({ ".eslintrc.js", ".eslintrc.cjs", ".eslintrc.yaml", ".eslintrc.yml", ".eslintrc.json" })

@@ -2,6 +2,7 @@
 local M = {
 	"nvim-treesitter/nvim-treesitter",
 	event = "BufReadPre",
+	build = ":TSUpdate",
 	dependencies = {
 		-- {
 		-- 	"windwp/nvim-autopairs", -- auto close brackets/quotes
@@ -32,15 +33,26 @@ local M = {
 
 function M.config()
 	local treesitter = require("nvim-treesitter")
-	local configs = require("nvim-treesitter.configs")
+	local configs = require("nvim-treesitter.config")
 	-- vim.opt.foldmethod = "expr"
 	-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 	-- add support for rasi files
 	vim.filetype.add({
-    extension = {
-      rasi = "rasi",
-    },
+		extension = {
+			rasi = "rasi",
+		},
 	})
+
+  local group = vim.api.nvim_create_augroup('TreesitterStart', {})
+
+  vim.api.nvim_clear_autocmds({ group = group })
+
+  vim.api.nvim_create_autocmd('FileType', {
+    group = group,
+    callback = function()
+      pcall(vim.treesitter.start)
+    end,
+  })
 
 	configs.setup({
 		-- put the language you want in this array
@@ -73,6 +85,7 @@ function M.config()
 		highlight = {
 			enable = true, -- false will disable the whole extension
 			disable = { "latex" },
+      additional_vim_regex_highlighting = false,
 			-- disable = { "css" }, -- list of language that will be disabled
 		},
 		indent = {

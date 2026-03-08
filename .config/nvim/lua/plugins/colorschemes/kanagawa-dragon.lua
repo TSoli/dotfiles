@@ -12,7 +12,7 @@ function M.config()
 	local utils = require("plugins.colorschemes.utils")
 
 	-- required to set a theme below
-	vim.o.background = nil
+	vim.o.background = "dark"
 
 	kanagawa.setup({
 		commentStyle = { italic = true },
@@ -21,6 +21,8 @@ function M.config()
 		statementStyle = { bold = true },
 		typeStyle = {},
 		theme = "dragon",
+		background = "",
+		transparent = true,
 		overrides = function(colors)
 			local bg = colors.theme.ui.bg
 			local scrollbar_bg = utils.blend_colors(colors.theme.ui.special, bg, 0.4)
