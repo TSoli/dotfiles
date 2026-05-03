@@ -1,9 +1,10 @@
 -- vim options
 -- use :help options for details
 local configdir = vim.fn.stdpath("config")
+local statedir = vim.fn.stdpath("state")
 local options = {
 	backup = false, -- save backups
-	backupdir = configdir .. "/.backup//", -- backup location
+	backupdir = statedir .. "/.backup//", -- backup location
 	clipboard = "", -- use system clipboard
 	cmdheight = 2, -- command line height
 	colorcolumn = { "80" }, -- set vertical rule
@@ -11,7 +12,7 @@ local options = {
 	conceallevel = 2, -- show concealed text
 	cursorline = true, -- highlight current line
 	cursorlineopt = "number", -- highlight current line number
-	dir = configdir .. "/.swp//", -- swap file directory
+	dir = statedir .. "/.swp//", -- swap file directory
 	expandtab = true, -- make tabs spaces
 	exrc = true,
 	fileencoding = "utf-8", -- encoding applied to files when write
@@ -48,7 +49,7 @@ local options = {
 	tabstop = 2, -- number of spaces used to represent a <Tab> in a file
 	updatetime = 200, -- After this many ms of no typing write swap file to disk
 	undofile = true, -- enable undofiles
-	undodir = configdir .. "/.undo//", -- undofile directory
+	undodir = statedir .. "/.undo//", -- undofile directory
 	wrap = false, -- whether lines wrap
 	writebackup = true, -- enable backup before writing
 }
