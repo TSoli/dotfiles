@@ -57,4 +57,4 @@ export EDITOR=$VISUAL
 
 export ZK_NOTEBOOK_DIR="$HOME/notes"
 export QT_QPA_PLATFORMTHEME=qt5ct
-. "$HOME/.cargo/env"
+[[ -f "$HOME/.cargo/env" ]] && . "$HOME/.cargo/env"

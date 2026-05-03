@@ -48,13 +48,25 @@ then
   emulate sh -c '. ~/.local_bashrc'
 fi
 
+if command -v fastfetch >/dev/null 2>&1; then
+  FETCH_CMD="fastfetch"
+elif command -v neofetch >/dev/null 2>&1; then
+  FETCH_CMD="neofetch"
+else
+  FETCH_CMD=""
+fi
+
 # Adpated from https://www.markhansen.co.nz/auto-start-tmux/
 # Check tmux exists, we are in interactive mode and TMUX is not open
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [ -z "$TMUX" ]; then
   # Adapted from https://unix.stackexchange.com/a/176885/347104
   # Create session 'main' or attach to 'main' if already exists.
   # tmux new-session -A -s main "neofetch; read"
-  tmux attach -t main || (tmux new-session -d -s main && tmux send neofetch Enter && tmux attach -t main)
+  if [ -n "$FETCH_CMD" ]; then
+    tmux attach -t main || (tmux new-session -d -s main && tmux send "$FETCH_CMD" Enter && tmux attach -t main)
+  else
+    tmux attach -t main || tmux new-session -s main
+  fi
 fi
 
 [[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'
