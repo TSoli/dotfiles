@@ -1,0 +1,241 @@
+/* Kanagawa Dragon - Waybar Theme
+ * Derived from https://github.com/rebelot/kanagawa.nvim
+ *
+ * GTK 3 does not support CSS custom properties (--var / var()).
+ * Colors are defined using GTK's @define-color syntax instead.
+ * Reference a color with @name, e.g. background-color: @bg;
+ */
+
+/* =========================================================
+ * Dragon Palette
+ * ========================================================= */
+
+/* Backgrounds */
+@define-color dragonBlack0 #0d0c0c;
+@define-color dragonBlack1 #12120f;
+@define-color dragonBlack2 #1D1C19;
+@define-color dragonBlack3 #181616;
+@define-color dragonBlack4 #282727;
+@define-color dragonBlack5 #393836;
+@define-color dragonBlack6 #625e5a;
+
+/* Foreground */
+@define-color dragonWhite #c5c9c5;
+
+/* Accent Colors */
+@define-color dragonGreen #87a987;
+@define-color dragonGreen2 #8a9a7b;
+@define-color dragonPink #a292a3;
+@define-color dragonOrange #b6927b;
+@define-color dragonOrange2 #b98d7b;
+@define-color dragonGray #a6a69c;
+@define-color dragonGray2 #9e9b93;
+@define-color dragonGray3 #7a8382;
+@define-color dragonBlue2 #8ba4b0;
+@define-color dragonViolet #8992a7;
+@define-color dragonRed #c4746e;
+@define-color dragonAqua #8ea4a2;
+@define-color dragonAsh #737c73;
+@define-color dragonTeal #949fb5;
+@define-color dragonYellow #c4b28a;
+
+/* Shared Palette Colors (used by the dragon theme) */
+@define-color oldWhite #C8C093;
+@define-color fujiWhite #DCD7BA;
+@define-color fujiGray #727169;
+@define-color waveBlue1 #223249;
+@define-color waveBlue2 #2D4F67;
+@define-color sumiInk6 #54546D;
+@define-color katanaGray #717C7C;
+@define-color dragonBlue #658594;
+@define-color samuraiRed #E82424;
+@define-color roninYellow #FF9E3B;
+@define-color springGreen #98BB6C;
+@define-color waveAqua1 #6A9589;
+@define-color winterGreen #2B3328;
+@define-color winterYellow #49443C;
+@define-color winterRed #43242B;
+@define-color winterBlue #252535;
+@define-color autumnGreen #76946A;
+@define-color autumnRed #C34043;
+@define-color autumnYellow #DCA561;
+@define-color waveRed #E46876;
+@define-color carpYellow #E6C384;
+@define-color springBlue #7FB4CA;
+@define-color springViolet1 #938AA9;
+@define-color waveAqua2 #7AA89F;
+
+/* =========================================================
+ * Semantic Theme Variables (Dragon)
+ * ========================================================= */
+
+/* --- UI --- */
+@define-color fg @dragonWhite;
+@define-color fg_dim @oldWhite;
+@define-color fg_reverse @waveBlue1;
+
+@define-color bg_dim @dragonBlack1;
+@define-color bg_gutter @dragonBlack4;
+
+@define-color bg_m3 @dragonBlack0;
+@define-color bg_m2 @dragonBlack1;
+@define-color bg_m1 @dragonBlack2;
+@define-color bg @dragonBlack3;
+@define-color bg_p1 @dragonBlack4;
+@define-color bg_p2 @dragonBlack5;
+
+@define-color special @dragonGray3;
+@define-color nontext @dragonBlack6;
+@define-color whitespace @dragonBlack6;
+
+@define-color bg_visual @waveBlue1;
+@define-color bg_search @waveBlue2;
+
+/* --- Popup / Menu --- */
+@define-color pmenu_fg @fujiWhite;
+@define-color pmenu_fg_sel transparent;
+@define-color pmenu_bg @waveBlue1;
+@define-color pmenu_bg_sel @waveBlue2;
+@define-color pmenu_bg_thumb @waveBlue2;
+@define-color pmenu_bg_sbar @waveBlue1;
+
+/* --- Float --- */
+@define-color float_fg @oldWhite;
+@define-color float_bg @dragonBlack0;
+@define-color float_fg_border @sumiInk6;
+@define-color float_bg_border @dragonBlack0;
+
+/* --- Accent --- */
+@define-color accent_green @dragonGreen;
+@define-color accent_blue @dragonBlue2;
+@define-color accent_aqua @dragonAqua;
+@define-color accent_teal @dragonTeal;
+@define-color accent_violet @dragonViolet;
+@define-color accent_red @dragonRed;
+@define-color accent_yellow @dragonYellow;
+@define-color accent_orange @dragonOrange;
+@define-color accent_pink @dragonPink;
+
+* {
+  border: none;
+  font-family: Hack Nerd Font, Roboto, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
+  border-radius: 5px;
+  ;
+}
+
+window#waybar {
+  background: transparent;
+  color: @fg;
+}
+
+tooltip {
+  color: @float_fg;
+  background: alpha(@float_bg, 0.5);
+  border: 1px solid alpha(@float_border, 0.5);
+}
+
+tooltip label {
+  color: @fg;
+}
+
+#workspaces button {
+  transition: all 150ms ease-in-out;
+  padding: 0 5px;
+  margin: 0 2px;
+  background: alpha(@bg, 0.6);
+  color: @fg;
+  border-radius: 10px;
+}
+
+#workspaces button.active {
+  min-width: 60px;
+  color: @fg_reverse;
+  font-weight: 700;
+  background: alpha(@accent_blue, 0.8);
+  border: 1px solid alpha(@bg_boder, 0.8);
+}
+
+#workspaces button.focused {
+  background: #64727D;
+  border-bottom: 3px solid white;
+}
+
+#window {
+  color: @fg;
+  background: alpha(@bg, 0.6);
+  padding: 0 10px;
+}
+
+#battery,
+#pulseaudio,
+#network,
+#clock {
+  color: @fg;
+  padding: 0 2px;
+  margin: 0 2px;
+}
+
+#clock {
+  font-weight: 700;
+}
+
+#battery {
+  background-color: alpha(@accent_green, 0.8);
+}
+
+/* #battery.charging { */
+/*   background-color: #26A65B; */
+/* } */
+
+@keyframes blink {
+  to {
+    background-color: #ffffff;
+    color: black;
+  }
+}
+
+#battery.warning:not(.charging) {
+  background: alpha(@accent_red, 0.8);
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#pulseaudio {
+  background-color: transparent;
+  color: @fg;
+  border: 1px transparent;
+}
+
+#pulseaudio-slider {
+  padding: 0 5px;
+  margin: 0;
+}
+
+#pulseaudio-slider slider {
+  min-height: 0px;
+  min-width: 0px;
+  opacity: 0;
+  background-image: none;
+  border: none;
+  box-shadow: none;
+}
+
+#pulseaudio-slider trough {
+  min-height: 10px;
+  min-width: 80px;
+  border-radius: 5px;
+  background: black;
+}
+
+#pulseaudio-slider highlight {
+  min-width: 10px;
+  border-radius: 5px;
+  background: alpha(@accent_green, 0.8);
+}

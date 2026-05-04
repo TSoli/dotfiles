@@ -1,0 +1,92 @@
+{
+  "layer": "top",
+  "margin-top": 5,
+  "margin-left": 5,
+  "margin-right": 5,
+  "modules-left": [
+    "hyprland/workspaces",
+    "hyprland/mode"
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    "battery",
+    "pulseaudio",
+    "pulseaudio/slider",
+    "network",
+    "clock"
+  ],
+  "hyprland/window": {
+    "max-length": 50
+  },
+  "battery": {
+    "format": "{capacity}% {icon}",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
+  },
+  "clock": {
+    "format-alt": "{:%a, %d. %b  %H:%M}"
+  },
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-bluetooth": "{icon}",
+    "format-muted": "",
+    "format-icons": {
+      "alsa_output.pci-0000_00_1f.3.analog-stereo": "  ",
+      "alsa_output.pci-0000_00_1f.3.analog-stereo-muted": "   ",
+      "headphone": "  ",
+      "hands-free": "",
+      "headset": "",
+      "phone": "  ",
+      "phone-muted": "  ",
+      "portable": "  ",
+      "car": "  ",
+      "default": [
+        "  ",
+        " "
+      ]
+    },
+    "scroll-step": 1,
+    "on-click": "pavucontrol",
+    "ignored-sinks": [
+      "Easy Effects Sink"
+    ],
+    "tooltip-format": "{volume}%"
+  },
+  "pulseaudio/slider": {
+    "min": 0,
+    "max": 100,
+    "orientation": "horizontal"
+  },
+  "network": {
+    // "interface": "enp10s0", autodetect?
+    "format": "{icon}",
+    "format-wifi": "{essid} ({signalStrength}%) ",
+    "format-ethernet": "󰈀 ",
+    "format-disconnected": "", //An empty format will hide the module.
+    "tooltip-format": "{ifname} via {gwaddr} 󰊗",
+    "tooltip-format-wifi": " {essid} ({signalStrength}%)",
+    "tooltip-format-ethernet": "{ifname}  {ipaddr}/{cidr}",
+    "tooltip-format-disconnected": " Disconnected",
+    "max-length": 50
+  },
+  "hyprland/workspaces": {
+    "format": "{name}{icon}",
+    "format-icons": {
+      "1": "  ",
+      "2": "  ",
+      // "active": "  ",
+      // "default": "  "
+      "default": ""
+    },
+    "persistent-workspaces": {
+      "*": 2 // 5 workspaces by default on every monitor
+    }
+  }
+}
