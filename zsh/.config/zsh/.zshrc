@@ -35,6 +35,11 @@ plug "zap-zsh/exa"
 plug "zsh-users/zsh-syntax-highlighting"
 zsh_add_file "vim-mode"
 
+# add eza completion
+if command -v brew &>/dev/null; then
+  fpath=("$(brew --prefix)/share/zsh/site-functions" $fpath)
+fi
+
 # Load and initialise completion system
 autoload -Uz compinit
 compinit
