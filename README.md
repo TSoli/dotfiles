@@ -7,19 +7,19 @@ dotfiles\) for a Linux machine.
 
 ## Power Menu
 
-![Power Menu](.config/screenshots/power-menu.png)
+![Power Menu](screenshots/.config/screenshots/power-menu.png)
 
 ## Terminal and File Browser
 
-![Terminal and Files](.config/screenshots/terminal_files.png)
+![Terminal and Files](screenshots/.config/screenshots/terminal_files.png)
 
 ## App Launcher
 
-![Rofi Menu](.config/screenshots/rofi.png)
+![Rofi Menu](screenshots/.config/screenshots/rofi.png)
 
 ## Password Manager Menu
 
-![Password Manager Menu](.config/screenshots/pwmenu.png)
+![Password Manager Menu](screenshots/.config/screenshots/pwmenu.png)
 
 # Migrating to a new system
 
