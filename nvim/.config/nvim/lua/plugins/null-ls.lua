@@ -94,8 +94,8 @@ function M.config()
 			--   --   }
 			--   -- end,
 			-- },
+			formatting.isort.with({ extra_args = { "--profile", "back" } }),
 			formatting.black.with({ extra_args = {} }),
-			formatting.isort,
 			formatting.stylua,
 			-- formatting.google_java_format,
 			-- note this was removed in newer versions
